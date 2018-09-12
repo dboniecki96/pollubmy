@@ -1,12 +1,14 @@
 nav{
-    padding: 20px;
+    background-color: rgba(61, 74, 78, 0.1);
 }
-.navbar{
-    background-color: rgb(220,220,220,0.4);
+img{
+    width:25px;
+    height:25px;
+    margin-bottom:6px;
 }
 .navbar-brand{
     font-size: 30px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Dosis', sans-serif;
 }
 .container-fluid{
     font-size: 18px;

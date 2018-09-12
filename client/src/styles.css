@@ -1,2 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,600');
+@import url('https://fonts.googleapis.com/css?family=Dosis:600|Roboto');
+body{
+    background-color: rgb(152, 177, 187);
+    margin: 15px 20px 15px 20px; 
+}
