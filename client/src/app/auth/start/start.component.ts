@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  selector: 'app-start',
+  templateUrl: './start.component.html',
+  styleUrls: ['./start.component.css']
 })
-export class ContentComponent implements OnInit {
+export class StartComponent implements OnInit {
 
   isRegisterButtonClicked = false;
   isLoginLinkClicked = false
@@ -19,5 +19,6 @@ export class ContentComponent implements OnInit {
   onClickLoginButton(){
     this.isLoginLinkClicked = true;
   }
+
 
 }
