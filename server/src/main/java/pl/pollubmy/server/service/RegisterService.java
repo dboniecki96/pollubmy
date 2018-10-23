@@ -1,10 +1,14 @@
 package pl.pollubmy.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.pollubmy.server.entity.User;
+import pl.pollubmy.server.entity.UserRole;
+import pl.pollubmy.server.enumType.RoleType;
 import pl.pollubmy.server.exceptions.UserFoundException;
 import pl.pollubmy.server.repository.UserRepository;
+import pl.pollubmy.server.repository.UserRoleRepository;
 
 import java.util.Optional;
 
@@ -12,10 +16,14 @@ import java.util.Optional;
 public class RegisterService {
 
     private final UserRepository userRepository;
+    private final UserRoleRepository userRoleRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegisterService(final UserRepository userRepository) {
+    public RegisterService(final UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.userRoleRepository = userRoleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User createUser(final User user) {
@@ -28,6 +36,7 @@ public class RegisterService {
         } else if (ifUserWithLoginExist.isPresent()) {
             throw new UserFoundException("User with this login exist.");
         } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             return this.userRepository.save(user);
         }
     }

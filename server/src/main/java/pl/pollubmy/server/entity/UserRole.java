@@ -1,9 +1,10 @@
 package pl.pollubmy.server.entity;
 
+import pl.pollubmy.server.enumType.RoleType;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 public class UserRole {
@@ -20,9 +21,9 @@ public class UserRole {
     @NotEmpty
     private User userIdFK;
 
-    @OneToMany(mappedBy = "userRoleIdFK")
-    private List<Role> roles;
-
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private RoleType roleName;
 
     // Getters and setters
 
@@ -42,11 +43,11 @@ public class UserRole {
         this.userIdFK = userIdFK;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public RoleType getRoleName() {
+        return roleName;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRoleName(RoleType roleName) {
+        this.roleName = roleName;
     }
 }

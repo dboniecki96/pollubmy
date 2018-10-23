@@ -15,7 +15,7 @@ public class Hobby {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userIdFk")
-    private User userIdFK;
+    private UserDetails userDetailsIdFK;
 
 
     // Getters and setters
@@ -36,11 +36,11 @@ public class Hobby {
         this.hobbyName = hobbyName;
     }
 
-    public User getUserIdFK() {
-        return userIdFK;
+    public UserDetails getUserDetailsIdFK() {
+        return userDetailsIdFK;
     }
 
-    public void setUserIdFK(User userIdFK) {
-        this.userIdFK = userIdFK;
+    public void setUserDetailsIdFK(UserDetails userDetailsIdFK) {
+        this.userDetailsIdFK = userDetailsIdFK;
     }
 }

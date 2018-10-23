@@ -1,7 +1,11 @@
 package pl.pollubmy.server.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class UserDetails {
@@ -15,6 +19,9 @@ public class UserDetails {
     @OneToOne
     @JoinColumn(name = "userIdFk")
     private User userIdFK;
+
+    @OneToMany(mappedBy = "userDetailsIdFK")
+    private List<Hobby> hobbies = new ArrayList<>();
 
     private String secondName;
 
@@ -36,9 +43,10 @@ public class UserDetails {
 
     private String academicDegree;
 
+    private LocalDate dateOfBirth;
+
 
     // Getters and setters
-
 
     public Long getUserDetailsId() {
         return userDetailsId;
@@ -134,5 +142,21 @@ public class UserDetails {
 
     public void setAcademicDegree(String academicDegree) {
         this.academicDegree = academicDegree;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

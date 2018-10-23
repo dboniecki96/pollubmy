@@ -13,16 +13,16 @@ import pl.pollubmy.server.service.RegisterService;
 @RestController
 public class RegisterController {
 
-    private final RegisterService userService;
+    private final RegisterService registerService;
 
     @Autowired
-    public RegisterController(final RegisterService userService) {
-        this.userService = userService;
+    public RegisterController(RegisterService registerService) {
+        this.registerService = registerService;
     }
 
     @PostMapping("/register")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<?> addNewUser(@RequestBody final User user) {
-        return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.OK);
+        return new ResponseEntity<>(this.registerService.createUser(user), HttpStatus.OK);
     }
 }
