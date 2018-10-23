@@ -1,7 +1,6 @@
 package pl.pollubmy.server.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -129,10 +128,12 @@ public class User {
         this.emailPollub = emailPollub;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
