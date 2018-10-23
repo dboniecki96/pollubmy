@@ -1,8 +1,8 @@
 package pl.pollubmy.server.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,10 @@ public class UserDetails {
     //Fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userDetailsId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
+    private String userDetailsId;
 
     @OneToOne
     @JoinColumn(name = "userIdFk")
@@ -48,11 +50,11 @@ public class UserDetails {
 
     // Getters and setters
 
-    public Long getUserDetailsId() {
+    public String getUserDetailsId() {
         return userDetailsId;
     }
 
-    public void setUserDetailsId(Long userDetailsId) {
+    public void setUserDetailsId(String userDetailsId) {
         this.userDetailsId = userDetailsId;
     }
 

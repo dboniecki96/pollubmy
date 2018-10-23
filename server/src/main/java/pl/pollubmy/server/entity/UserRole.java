@@ -1,10 +1,10 @@
 package pl.pollubmy.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.GenericGenerator;
 import pl.pollubmy.server.enumType.RoleType;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserRole {
@@ -12,26 +12,40 @@ public class UserRole {
     //Fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userRoleId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
+    private String userRoleId;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "userIdFk")
-    @NotNull
-    @NotEmpty
     private User userIdFK;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
     private RoleType roleName;
+
+    public UserRole(RoleType roleName) {
+        this.roleName = roleName;
+    }
+
+    //Constructor
+
+    public UserRole() {
+    }
+
+    public UserRole(User userIdFK, RoleType roleName) {
+        this.userIdFK = userIdFK;
+        this.roleName = roleName;
+    }
 
     // Getters and setters
 
-    public Long getUserRoleId() {
+    public String getUserRoleId() {
         return userRoleId;
     }
 
-    public void setUserRoleId(Long userRoleId) {
+    public void setUserRoleId(String userRoleId) {
         this.userRoleId = userRoleId;
     }
 
@@ -50,4 +64,5 @@ public class UserRole {
     public void setRoleName(RoleType roleName) {
         this.roleName = roleName;
     }
+
 }

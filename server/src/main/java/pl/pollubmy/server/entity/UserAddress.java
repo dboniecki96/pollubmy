@@ -1,5 +1,6 @@
 package pl.pollubmy.server.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import pl.pollubmy.server.enumType.CountryType;
 
 import javax.persistence.*;
@@ -12,8 +13,10 @@ public class UserAddress {
     //Fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userAddressId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
+    private String userAddressId;
 
     @NotNull
     @NotEmpty
@@ -44,11 +47,11 @@ public class UserAddress {
 
     // Getters and setters
 
-    public long getUserAddressId() {
+    public String getUserAddressId() {
         return userAddressId;
     }
 
-    public void setUserAddressId(long userAddressId) {
+    public void setUserAddressId(String userAddressId) {
         this.userAddressId = userAddressId;
     }
 

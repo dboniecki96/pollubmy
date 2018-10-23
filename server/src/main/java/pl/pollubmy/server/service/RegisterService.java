@@ -15,14 +15,14 @@ import java.util.Optional;
 @Service
 public class RegisterService {
 
-    private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
+    private final UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegisterService(final UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+    public RegisterService(UserRoleRepository userRoleRepository, final UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRoleRepository = userRoleRepository;
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -37,6 +37,7 @@ public class RegisterService {
             throw new UserFoundException("User with this login exist.");
         } else {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setUserRole(new UserRole(user, RoleType.STUDENT));
             return this.userRepository.save(user);
         }
     }

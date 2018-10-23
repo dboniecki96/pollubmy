@@ -1,5 +1,7 @@
 package pl.pollubmy.server.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,8 +10,10 @@ public class Hobby {
     //Fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long hobbyId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
+    private String hobbyId;
 
     private String hobbyName;
 
@@ -20,11 +24,11 @@ public class Hobby {
 
     // Getters and setters
 
-    public long getHobbyId() {
+    public String getHobbyId() {
         return hobbyId;
     }
 
-    public void setHobbyId(long hobbyId) {
+    public void setHobbyId(String hobbyId) {
         this.hobbyId = hobbyId;
     }
 

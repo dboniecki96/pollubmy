@@ -1,5 +1,9 @@
 package pl.pollubmy.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -12,10 +16,13 @@ public class User {
     //Fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
+    private String userId;
 
-    @OneToOne(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToOne(mappedBy = "userIdFK", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private UserRole userRole;
 
     @OneToOne(mappedBy = "userIdFK")
@@ -50,14 +57,19 @@ public class User {
 
     private boolean isActive = true;
 
+    // Constructor
+
+    public User() {
+    }
 
     // Getters and setters
 
-    public Long getUserId() {
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -131,5 +143,21 @@ public class User {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userRole=" + userRole +
+                ", userAddress=" + userAddress +
+                ", userDetails=" + userDetails +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", login='" + login + '\'' +
+                ", emailPollub='" + emailPollub + '\'' +
+                ", password='" + password + '\'' +
+                ", isActive=" + isActive +
+                '}';
     }
 }
