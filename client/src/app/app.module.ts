@@ -1,3 +1,4 @@
+import { StartComponent } from './auth/start/start.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header/header.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ContentComponent } from './content/content/content.component';
 import { Router,RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    ContentComponent
+    StartComponent
   ],
   imports: [
     BrowserModule,
