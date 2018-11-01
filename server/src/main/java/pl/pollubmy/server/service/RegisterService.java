@@ -15,13 +15,11 @@ import java.util.Optional;
 @Service
 public class RegisterService {
 
-    private final UserRoleRepository userRoleRepository;
     private final UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegisterService(UserRoleRepository userRoleRepository, final UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRoleRepository = userRoleRepository;
+    public RegisterService(final UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
