@@ -1,63 +1,61 @@
 package pl.pollubmy.server.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.util.StringUtils;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import pl.pollubmy.server.entity.UserToLogin;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+import static pl.pollubmy.server.security.SecurityParameters.*;
 
-    private JwtTokenProvider tokenProvider;
-    private CustomUserDetailsService customUserDetailsService;
+public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    @Autowired
-    public JwtAuthenticationFilter(JwtTokenProvider tokenProvider, CustomUserDetailsService customUserDetailsService) {
-        this.tokenProvider = tokenProvider;
-        this.customUserDetailsService = customUserDetailsService;
-    }
+    private AuthenticationManager authenticationManager;
 
-    public JwtAuthenticationFilter() {
-
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
         try {
-            String jwt = getJwtFromRequest(request);
+            UserToLogin userToLogin = new ObjectMapper().readValue(request.getInputStream(), UserToLogin.class);
 
-            if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-
-                String userId = tokenProvider.getUserIdFromJWT(jwt);
-
-                UserDetails userDetails = customUserDetailsService.loadUserById(userId);
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
-        } catch (Exception ex) {
-            logger.error("Could not set user authentication in security context", ex);
+            return authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(userToLogin.getLoginOrEmail(), userToLogin.getPassword())
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-        filterChain.doFilter(request, response);
-
     }
 
-    private String getJwtFromRequest(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7, bearerToken.length());
-        }
-        return null;
+    @Override
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+
+        ZonedDateTime expirationTimeUTC = ZonedDateTime.now(ZoneOffset.UTC).plus(EXPIRATION_TIME, ChronoUnit.MILLIS);
+
+        String token = Jwts.builder().setSubject(((User) authResult.getPrincipal()).getUsername())
+                .setExpiration(Date.from(expirationTimeUTC.toInstant()))
+                .signWith(SignatureAlgorithm.HS256, SECRET)
+                .compact();
+
+        response.getWriter().write(token); //LOOK JSON FORMAT
+        response.addHeader(HEADER, PREFIX + token);
     }
 }

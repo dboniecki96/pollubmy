@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import pl.pollubmy.server.security.JwtAuthenticationEntryPoint;
 import pl.pollubmy.server.security.JwtAuthenticationFilter;
 import pl.pollubmy.server.security.CustomUserDetailsService;
+import pl.pollubmy.server.security.JwtAuthorizationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -33,11 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
-    }
-
-    @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter();
     }
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
@@ -72,10 +68,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .antMatchers("/login/access").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/user/**").access("hasRole('ROLE_USER')");
-                 /*..and();
-                .anyRequest().authenticated();
-           formLogin()
+                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+                .and()
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), customUserDetailsService))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()));
+
+           /*.formLogin()
                 .loginPage("/login/access")
                 .usernameParameter("loginOrEmail")
                 .passwordParameter("password")
@@ -84,7 +82,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
                 .permitAll();*/
 
-        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         http.headers().cacheControl();
     }
 }

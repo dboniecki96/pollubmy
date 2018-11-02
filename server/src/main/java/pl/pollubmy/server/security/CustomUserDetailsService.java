@@ -1,6 +1,7 @@
 package pl.pollubmy.server.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,18 +30,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         Optional<User> userWithEmailOrLoginExist = this.userRepository.findByEmailPollubOrLogin(loginOrEmail, loginOrEmail);
 
         if (userWithEmailOrLoginExist.isPresent()) {
-            return JwtUserPrincipal.create(userWithEmailOrLoginExist.get());
-        } else {
-            throw new UserNotFoundException("User with this email or login doesn't exist");
-        }
-    }
-
-    @Transactional
-    public UserDetails loadUserById(String userId) {
-        Optional<User> userWithUsedIdExist = this.userRepository.findByUserId(userId);
-
-        if (userWithUsedIdExist.isPresent()) {
-            return JwtUserPrincipal.create(userWithUsedIdExist.get());
+            User foundUser = userWithEmailOrLoginExist.get();
+            return new org.springframework.security.core.userdetails.User(foundUser.getLogin(), foundUser.getPassword(), AuthorityUtils.createAuthorityList(foundUser.getUserRole().toString()));
         } else {
             throw new UserNotFoundException("User with this email or login doesn't exist");
         }
