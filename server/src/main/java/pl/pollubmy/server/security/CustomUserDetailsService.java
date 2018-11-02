@@ -1,4 +1,4 @@
-package pl.pollubmy.server.service;
+package pl.pollubmy.server.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.pollubmy.server.entity.User;
 import pl.pollubmy.server.exceptions.UserNotFoundException;
 import pl.pollubmy.server.repository.UserRepository;
-import pl.pollubmy.server.security.JwtUserPrincipal;
 
 import java.util.Optional;
 
@@ -27,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String loginOrEmail) throws UsernameNotFoundException {
 
-        Optional<User> userWithEmailOrLoginExist = userRepository.findByEmailPollubOrLogin(loginOrEmail, loginOrEmail);
+        Optional<User> userWithEmailOrLoginExist = this.userRepository.findByEmailPollubOrLogin(loginOrEmail, loginOrEmail);
 
         if (userWithEmailOrLoginExist.isPresent()) {
             return JwtUserPrincipal.create(userWithEmailOrLoginExist.get());
@@ -37,8 +36,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Transactional
-    public UserDetails loadUserById(String userId){
-        Optional<User> userWithUsedIdExist = userRepository.findByUserId(userId);
+    public UserDetails loadUserById(String userId) {
+        Optional<User> userWithUsedIdExist = this.userRepository.findByUserId(userId);
 
         if (userWithUsedIdExist.isPresent()) {
             return JwtUserPrincipal.create(userWithUsedIdExist.get());

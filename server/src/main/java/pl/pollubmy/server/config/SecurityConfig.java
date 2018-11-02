@@ -15,7 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import pl.pollubmy.server.security.JwtAuthenticationEntryPoint;
-import pl.pollubmy.server.service.CustomUserDetailsService;
+import pl.pollubmy.server.security.JwtAuthenticationFilter;
+import pl.pollubmy.server.security.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -35,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    private JwtAuthenticationFilter jwtAuthenticationFilter() {
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
         return new JwtAuthenticationFilter();
     }
 
@@ -68,12 +69,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
             .authorizeRequests()
-                .antMatchers("/register", "/login/access").permitAll()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/login/access").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/user/**").access("hasRole('ROLE_USER')");
+                 /*..and();
                 .anyRequest().authenticated();
-            /*.formLogin()
-                .loginPage("/login")
+           formLogin()
+                .loginPage("/login/access")
+                .usernameParameter("loginOrEmail")
+                .passwordParameter("password")
                 .permitAll()
                 .and()
             .logout()

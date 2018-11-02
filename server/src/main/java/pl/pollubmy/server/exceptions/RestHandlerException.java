@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler {
+public class RestHandlerException extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = UserFoundException.class)
     public ResponseEntity<?> handleException(HttpServletRequest httpServletRequest, Exception ex) {
