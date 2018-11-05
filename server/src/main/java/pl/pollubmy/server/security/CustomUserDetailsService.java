@@ -27,11 +27,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String loginOrEmail) throws UsernameNotFoundException {
 
-        Optional<User> userWithEmailOrLoginExist = this.userRepository.findByEmailPollubOrLogin(loginOrEmail, loginOrEmail);
+        User foundUser = loadFromDBUserByLoginOrEmail(loginOrEmail);
+        return new org.springframework.security.core.userdetails.User(foundUser.getLogin(), foundUser.getPassword(), AuthorityUtils.createAuthorityList(foundUser.getUserRole().toString()));
+    }
 
+    public User loadFromDBUserByLoginOrEmail(String loginOrEmail){
+        Optional<User> userWithEmailOrLoginExist = this.userRepository.findByEmailPollubOrLogin(loginOrEmail, loginOrEmail);
         if (userWithEmailOrLoginExist.isPresent()) {
-            User foundUser = userWithEmailOrLoginExist.get();
-            return new org.springframework.security.core.userdetails.User(foundUser.getLogin(), foundUser.getPassword(), AuthorityUtils.createAuthorityList(foundUser.getUserRole().toString()));
+            return userWithEmailOrLoginExist.get();
         } else {
             throw new UserNotFoundException("User with this email or login doesn't exist");
         }

@@ -8,7 +8,7 @@ import pl.pollubmy.server.entity.UserToLogin;
 import pl.pollubmy.server.service.LoginService;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/logged")
 public class LoginController {
 
     private final LoginService loginService;
@@ -19,8 +19,9 @@ public class LoginController {
     }
 
     @PostMapping("/access")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //as@CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<?> authenticateUser(@RequestBody final UserToLogin userToLogin) {
-        return new ResponseEntity<>(this.loginService.tryLogin(userToLogin), HttpStatus.OK);
+        return new ResponseEntity<>("Hello", HttpStatus.OK);
     }
 }
+
