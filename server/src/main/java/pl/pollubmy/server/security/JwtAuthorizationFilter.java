@@ -51,19 +51,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null);
             }
-
             return null;
         }
-
         return null;
-
-        /*if (token == null) return null;
-
-        String username = Jwts.parser().setSigningKey(SECRET)
-                .parseClaimsJws(token.replace(PREFIX, "")).getBody().getSubject();
-
-        org.springframework.security.core.userdetails.UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
-        User user = customUserDetailsService.loadFromDBUserByLoginOrEmail(username);
-        return username != null ? new UsernamePasswordAuthenticationToken(user, null, userDetails.getAuthorities()) : null;*/
     }
 }

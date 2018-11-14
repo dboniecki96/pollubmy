@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.pollubmy.server.entity.User;
@@ -25,14 +24,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String loginOrEmail) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String loginOrEmail) {
 
         User foundUser = loadFromDBUserByLoginOrEmail(loginOrEmail);
         return new org.springframework.security.core.userdetails.User(foundUser.getLogin(), foundUser.getPassword(), AuthorityUtils.createAuthorityList(foundUser.getUserRole().toString()));
     }
 
-    public User loadFromDBUserByLoginOrEmail(String loginOrEmail){
+    public User loadFromDBUserByLoginOrEmail(final String loginOrEmail) {
         Optional<User> userWithEmailOrLoginExist = this.userRepository.findByEmailPollubOrLogin(loginOrEmail, loginOrEmail);
+
         if (userWithEmailOrLoginExist.isPresent()) {
             return userWithEmailOrLoginExist.get();
         } else {
