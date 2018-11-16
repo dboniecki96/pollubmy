@@ -19,9 +19,8 @@ public class LoginController {
     }
 
     @PostMapping("/access")
-    //as@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<?> authenticateUser(@RequestBody final UserToLogin userToLogin) {
         return new ResponseEntity<>("Hello", HttpStatus.OK);
     }
 }
-
