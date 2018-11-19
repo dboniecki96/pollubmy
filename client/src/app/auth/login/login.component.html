@@ -1,16 +1,37 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+          <form  (ngSubmit)="onLogin(f)" #f="ngForm">
+              <div class="form-group">
+                <label class="control-label" for="loginOrEmail">Adres e-mail lub hasło</label>
+                <input type="text" 
+                class="form-control" 
+                id="loginOrEmail" name="loginOrEmail"  
+                placeholder="Adres email lub hasło" 
+                required ngModel
+                #loginOrEmail="ngModel">
+                <p class="emailValidation alert alert-danger" *ngIf="!loginOrEmail.valid && loginOrEmail.touched">
+                  Wprowadź poprawny adres e-mail z domeną pollub.edu.pl lub login. 
+                </p>
+              </div>
+              <div class="form-group">
+                <label class="control-label"for="password">Hasło</label>
+                <input type="password" 
+                class="form-control" 
+                id="password" name="password" 
+                required ngModel
+                #password="ngModel">
+                <p class="passwordValidation alert alert-danger" *ngIf="!password.valid && password.touched">
+                  Wprowadź hasło
+                </p>
+              </div>
+                <button type="submit" [disabled]="!(loginOrEmail.valid && password.valid)"class="btn btn-primary">Zaloguj się</button>
+                <p class="wrongEmailOrPassword alert alert-danger" *ngIf="loginService.getErrorStatus() == 401">
+                    Niepoprawne dane logowania!
+                </p>
+            </form>
+      </div>   
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Log In</button>
-</form>
+  
+  
