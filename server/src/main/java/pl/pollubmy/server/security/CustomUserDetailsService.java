@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.pollubmy.server.entity.User;
-import pl.pollubmy.server.exceptions.UserNotFoundException;
 import pl.pollubmy.server.repository.UserRepository;
 
 import java.util.Optional;
@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (userWithEmailOrLoginExist.isPresent()) {
             return userWithEmailOrLoginExist.get();
         } else {
-            throw new UserNotFoundException("User with this email or login doesn't exist");
+            throw new UsernameNotFoundException("User with this email or login doesn't exist");
         }
     }
 }
