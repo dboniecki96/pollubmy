@@ -23,7 +23,7 @@ public class UserDetails {
     private User userIdFK;
 
     @OneToMany(mappedBy = "userDetailsIdFK")
-    private List<Hobby> hobbies = new ArrayList<>();
+    private List<Hobby> hobbies;
 
     private String secondName;
 

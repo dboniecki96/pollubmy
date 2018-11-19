@@ -10,18 +10,19 @@ import pl.pollubmy.server.exceptions.UserFoundException;
 import pl.pollubmy.server.repository.UserRepository;
 import pl.pollubmy.server.repository.UserRoleRepository;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class RegisterService {
 
-    private final UserRoleRepository userRoleRepository;
     private final UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegisterService(UserRoleRepository userRoleRepository, final UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRoleRepository = userRoleRepository;
+    public RegisterService(final UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -36,8 +37,14 @@ public class RegisterService {
         } else if (ifUserWithLoginExist.isPresent()) {
             throw new UserFoundException("User with this login exist.");
         } else {
+
+            List userPrivileges = new ArrayList();
+
+            userPrivileges.add(new UserRole(RoleType.STUDENT));
+
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setUserRole(new UserRole(user, RoleType.STUDENT));
+            user.setUserRole(userPrivileges);
+
             return this.userRepository.save(user);
         }
     }

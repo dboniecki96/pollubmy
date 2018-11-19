@@ -18,7 +18,7 @@ public class UserRole {
     private String userRoleId;
 
     @JsonBackReference
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userIdFk")
     private User userIdFK;
 

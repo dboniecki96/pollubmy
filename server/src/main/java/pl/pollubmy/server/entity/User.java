@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class User {
@@ -21,8 +22,8 @@ public class User {
     private String userId;
 
     @JsonManagedReference
-    @OneToOne(mappedBy = "userIdFK", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private UserRole userRole;
+    @OneToMany(mappedBy = "userIdFK", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<UserRole> userRole;
 
     @OneToOne(mappedBy = "userIdFK")
     private UserAddress userAddress;
@@ -63,7 +64,6 @@ public class User {
 
     // Getters and setters
 
-
     public String getUserId() {
         return userId;
     }
@@ -72,11 +72,11 @@ public class User {
         this.userId = userId;
     }
 
-    public UserRole getUserRole() {
+    public List<UserRole> getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(UserRole userRole) {
+    public void setUserRole(List<UserRole> userRole) {
         this.userRole = userRole;
     }
 
