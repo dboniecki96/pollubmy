@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -18,10 +19,12 @@ import static pl.pollubmy.server.security.SecurityParameters.*;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, CustomUserDetailsService customUserDetailsService) {
         super(authenticationManager);
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     @Override
@@ -43,13 +46,15 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String token = request.getHeader(HEADER);
 
         if (token != null) {
-            String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
+            String username = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
                     .build()
                     .verify(token.replace(PREFIX, ""))
                     .getSubject();
 
-            if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null);
+            UserDetails userDetails =  this.customUserDetailsService.loadUserByUsername(username);
+            System.out.println(userDetails);
+            if (username != null) {
+                return new UsernamePasswordAuthenticationToken(username, null, null);
             }
             return null;
         }

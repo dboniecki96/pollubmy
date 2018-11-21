@@ -25,13 +25,14 @@ public class UserRole {
     @Enumerated(EnumType.STRING)
     private RoleType roleName;
 
-    public UserRole(RoleType roleName) {
-        this.roleName = roleName;
-    }
 
     //Constructor
 
     public UserRole() {
+    }
+
+    public UserRole(RoleType roleName) {
+        this.roleName = roleName;
     }
 
     public UserRole(User userIdFK, RoleType roleName) {

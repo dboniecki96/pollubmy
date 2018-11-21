@@ -8,10 +8,8 @@ import pl.pollubmy.server.entity.UserRole;
 import pl.pollubmy.server.enumType.RoleType;
 import pl.pollubmy.server.exceptions.UserFoundException;
 import pl.pollubmy.server.repository.UserRepository;
-import pl.pollubmy.server.repository.UserRoleRepository;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +38,7 @@ public class RegisterService {
 
             List userPrivileges = new ArrayList();
 
-            userPrivileges.add(new UserRole(RoleType.STUDENT));
+            userPrivileges.add(new UserRole(user, RoleType.STUDENT));
 
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setUserRole(userPrivileges);
