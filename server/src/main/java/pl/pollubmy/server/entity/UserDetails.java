@@ -1,10 +1,13 @@
 package pl.pollubmy.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
+import pl.pollubmy.server.enumType.HobbyEnum;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,11 +22,11 @@ public class UserDetails {
     private String userDetailsId;
 
     @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "userIdFk")
     private User userIdFK;
 
-    @OneToMany(mappedBy = "userDetailsIdFK")
-    private List<Hobby> hobbies;
+    //private List<HobbyEnum> hobbies;
 
     private String secondName;
 
@@ -35,15 +38,13 @@ public class UserDetails {
 
     private int term;
 
+    private String academicDegree;
+
     private String albumNumber;
 
     private LocalDate startDate;
 
-    private LocalDate finshDate;
-
-    private String PESEL;
-
-    private String academicDegree;
+    private LocalDate finishDate;
 
     private LocalDate dateOfBirth;
 
@@ -123,19 +124,11 @@ public class UserDetails {
     }
 
     public LocalDate getFinshDate() {
-        return finshDate;
+        return finishDate;
     }
 
     public void setFinshDate(LocalDate finshDate) {
-        this.finshDate = finshDate;
-    }
-
-    public String getPESEL() {
-        return PESEL;
-    }
-
-    public void setPESEL(String PESEL) {
-        this.PESEL = PESEL;
+        this.finishDate = finshDate;
     }
 
     public String getAcademicDegree() {
@@ -146,13 +139,13 @@ public class UserDetails {
         this.academicDegree = academicDegree;
     }
 
-    public List<Hobby> getHobbies() {
+/*    public List<HobbyEnum> getHobbies() {
         return hobbies;
     }
 
-    public void setHobbies(List<Hobby> hobbies) {
+    public void setHobbies(List<HobbyEnum> hobbies) {
         this.hobbies = hobbies;
-    }
+    }*/
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;

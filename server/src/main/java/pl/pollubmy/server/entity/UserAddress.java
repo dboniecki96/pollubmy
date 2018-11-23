@@ -1,5 +1,6 @@
 package pl.pollubmy.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 import pl.pollubmy.server.enumType.CountryType;
 
@@ -18,31 +19,22 @@ public class UserAddress {
     @Column(columnDefinition = "CHAR(32)")
     private String userAddressId;
 
-    @NotNull
-    @NotEmpty
+    @OneToOne
+    @JsonBackReference
+    @JoinColumn(name = "userIdFk")
+    private User userIdFK;
+
     private CountryType Country;
 
-    @NotNull
-    @NotEmpty
     private String city;
 
-    @NotNull
-    @NotEmpty
     private String street;
 
-    @NotNull
-    @NotEmpty
     private String houseNumber;
 
     private String apartmentNumber;
 
-    @NotNull
-    @NotEmpty
     private String postalCode;
-
-    @OneToOne
-    @JoinColumn(name = "userIdFk")
-    private User userIdFK;
 
 
     // Getters and setters

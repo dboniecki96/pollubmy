@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 @ControllerAdvice
 public class RestHandlerException extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = {UserFoundException.class, UserNotFoundException.class, UserNotLoginException.class})
+    @ExceptionHandler(value = {
+            UserFoundException.class,
+            UserNotFoundException.class,
+            UserNotLoginException.class,
+            WrongRequestException.class})
     public ResponseEntity<?> handleExceptionUserFound(HttpServletRequest httpServletRequest, Exception ex) {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }

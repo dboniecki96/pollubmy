@@ -25,11 +25,13 @@ public class User {
     @OneToMany(mappedBy = "userIdFK", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<UserRole> userRole;
 
-    @OneToOne(mappedBy = "userIdFK")
-    private UserAddress userAddress;
+    @JsonManagedReference
+    @OneToOne(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    private UserAddress userAddress = new UserAddress();
 
-    @OneToOne(mappedBy = "userIdFK")
-    private UserDetails userDetails;
+    @JsonManagedReference
+    @OneToOne(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    private UserDetails userDetails = new UserDetails();
 
     @NotNull
     @NotEmpty
@@ -60,6 +62,8 @@ public class User {
     // Constructor
 
     public User() {
+        this.getUserDetails().setUserIdFK(this);
+        this.getUserAddress().setUserIdFK(this);
     }
 
     // Getters and setters

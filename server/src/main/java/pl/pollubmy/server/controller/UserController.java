@@ -5,8 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.pollubmy.server.entity.User;
 import pl.pollubmy.server.entity.UserLogged;
+import pl.pollubmy.server.entity.UserToLogin;
+import pl.pollubmy.server.entity.dto.UserDTO;
 import pl.pollubmy.server.service.UserService;
 
 import java.security.Principal;
@@ -36,14 +37,21 @@ public class UserController {
 
     @PatchMapping
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<?> deactivateUser() {
-        this.userService.closeAccount();
-        return new ResponseEntity<>( HttpStatus.OK);
+    public ResponseEntity<?> deactivateUser(final Principal principal) {
+        this.userService.closeAccount(UserLogged.getLogin(principal));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<?> editUser(@RequestBody final User user) {
-        return new ResponseEntity<>(this.userService, HttpStatus.OK);
+    public ResponseEntity<?> editUser(@RequestBody final UserDTO userDTO, Principal principal) {
+        return new ResponseEntity<>(this.userService.updateUser(userDTO, UserLogged.getLogin(principal)), HttpStatus.OK);
+    }
+
+    @PatchMapping("/changePassword")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public ResponseEntity<?> changePassword(@RequestBody final UserToLogin user, Principal principal){
+        this.userService.changePassword(user.getLoginOrEmail(), UserLogged.getLogin(principal));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
