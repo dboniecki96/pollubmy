@@ -2,13 +2,9 @@ package pl.pollubmy.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
-import pl.pollubmy.server.enumType.HobbyEnum;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 public class UserDetails {
@@ -34,8 +30,10 @@ public class UserDetails {
 
     private String specialization;
 
+    @Column(nullable = true)
     private int year;
 
+    @Column(nullable = true)
     private int term;
 
     private String academicDegree;
@@ -47,7 +45,6 @@ public class UserDetails {
     private LocalDate finishDate;
 
     private LocalDate dateOfBirth;
-
 
     // Getters and setters
 
@@ -105,6 +102,14 @@ public class UserDetails {
 
     public void setTerm(int term) {
         this.term = term;
+    }
+
+    public LocalDate getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(LocalDate finishDate) {
+        this.finishDate = finishDate;
     }
 
     public String getAlbumNumber() {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.pollubmy.server.entity.UserLogged;
 import pl.pollubmy.server.entity.UserToLogin;
+import pl.pollubmy.server.entity.dto.PasswordDTO;
 import pl.pollubmy.server.entity.dto.UserDTO;
 import pl.pollubmy.server.service.UserService;
 
@@ -48,10 +49,12 @@ public class UserController {
         return new ResponseEntity<>(this.userService.updateUser(userDTO, UserLogged.getLogin(principal)), HttpStatus.OK);
     }
 
-    @PatchMapping("/changePassword")
+    @PatchMapping("/updatePassword")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<?> changePassword(@RequestBody final UserToLogin user, Principal principal){
-        this.userService.changePassword(user.getLoginOrEmail(), UserLogged.getLogin(principal));
+    public ResponseEntity<?> changePassword(@RequestBody final PasswordDTO userPassword, Principal principal){
+        this.userService.changePassword(
+                userPassword.getNewPassword(),
+                UserLogged.getLogin(principal));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

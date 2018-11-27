@@ -1,14 +1,17 @@
 package pl.pollubmy.server.service;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 import pl.pollubmy.server.entity.User;
-import pl.pollubmy.server.entity.UserDetails;
 import pl.pollubmy.server.entity.dto.UserDTO;
 import pl.pollubmy.server.entity.dto.UserDTOConverter;
 import pl.pollubmy.server.entity.tool.CopyPropertiesTool;
+import pl.pollubmy.server.exceptions.UserFoundException;
 import pl.pollubmy.server.exceptions.UserNotFoundException;
 import pl.pollubmy.server.exceptions.WrongRequestException;
 import pl.pollubmy.server.repository.UserRepository;
@@ -53,36 +56,50 @@ public class UserService {
 
     public void closeAccount(String login) {
 
-        Optional<User> userToDeactivate = userRepository.findByLogin(login);
+        Optional<User> userToDeactivate = this.userRepository.findByLogin(login);
 
         if (userToDeactivate.isPresent()) {
             userToDeactivate.get().setActive(false);
-            userRepository.save(userToDeactivate.get());
+            this.userRepository.save(userToDeactivate.get());
         } else {
             throw new UserNotFoundException("User with this login not found");
         }
     }
 
-    public void changePassword(String password, String login) {
+    public void changePassword(String newPassword, String login) {
 
-        Optional<User> userChangePassword = userRepository.findByLogin(login);
+        Optional<User> userChangePassword = this.userRepository.findByLogin(login);
 
         if (userChangePassword.isPresent()) {
-            userChangePassword.get().setPassword(passwordEncoder.encode(password));
+
+            SecurityContextHolder.clearContext();
+
+            userChangePassword.get().setPassword(passwordEncoder.encode(newPassword));
+
+            this.userRepository.save(userChangePassword.get());
         } else {
             throw new UserNotFoundException("User with this login not found");
         }
+
     }
 
     public UserDTO updateUser(UserDTO userDTO, String login) {
 
-        if(userDTO.getUserDetails()==null || userDTO.getUserAddress()== null){
+        if (userDTO.getUserDetails() == null || userDTO.getUserAddress() == null) {
             throw new WrongRequestException("Empty field userDetailsId or userAddressId");
+        }
+
+        boolean ifUserWithExistEmail = this.userRepository.findByEmailPollub(userDTO.getEmailPollub()).isPresent();
+        boolean ifUserWithExistLogin = this.userRepository.findByLogin(userDTO.getLogin()).isPresent();
+
+        if (ifUserWithExistEmail || ifUserWithExistLogin) {
+            throw new UserFoundException("User with this email or login exist");
         }
 
         Optional<User> userToUpdate = this.userRepository.findByLogin(login);
 
-        if (userToUpdate.isPresent()) { User user = userToUpdate.get();
+        if (userToUpdate.isPresent()) {
+            User user = userToUpdate.get();
 
             CopyPropertiesTool.copyNonNullProperties(userDTO, user);
 
@@ -92,6 +109,5 @@ public class UserService {
         } else {
             throw new UserNotFoundException("User with this login not found");
         }
-
     }
 }

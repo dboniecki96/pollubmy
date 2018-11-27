@@ -25,7 +25,6 @@ public class UserRole {
     @Enumerated(EnumType.STRING)
     private RoleType roleName;
 
-
     //Constructor
 
     public UserRole() {
@@ -65,5 +64,4 @@ public class UserRole {
     public void setRoleName(RoleType roleName) {
         this.roleName = roleName;
     }
-
 }

@@ -5,8 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import pl.pollubmy.server.enumType.CountryType;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserAddress {
@@ -35,7 +33,6 @@ public class UserAddress {
     private String apartmentNumber;
 
     private String postalCode;
-
 
     // Getters and setters
 
