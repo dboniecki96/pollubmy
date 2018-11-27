@@ -1,6 +1,6 @@
 package pl.pollubmy.server.enumType;
 
-public enum  HobbyEnum {
+public enum HobbyEnum {
     READING,
     PHOTOGRAPHY,
     GAMES,

@@ -7,8 +7,8 @@ public class UserDTOConverter {
     public UserDTOConverter() {
     }
 
-    public static UserDTO toDTO(User user){
-        UserDTO userDTO= new UserDTO();
+    public static UserDTO toDTO(User user) {
+        UserDTO userDTO = new UserDTO();
         userDTO.setUserId(user.getUserId());
         userDTO.setFirstName(user.getFirstName());
         userDTO.setLastName(user.getLastName());
