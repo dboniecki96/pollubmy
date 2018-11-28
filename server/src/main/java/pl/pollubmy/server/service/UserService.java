@@ -1,5 +1,6 @@
 package pl.pollubmy.server.service;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -82,9 +83,9 @@ public class UserService {
 
     public UserDTO updateUser(UserDTO userDTO, String login) {
 
-        if (userDTO.getUserDetails() == null || userDTO.getUserAddress() == null) {
+       /* if (userDTO.getUserDetails() == null || userDTO.getUserAddress() == null) {
             throw new WrongRequestException("Empty field userDetailsId or userAddressId");
-        }
+        }*/
 
         boolean ifUserWithExistEmail = this.userRepository.findByEmailPollub(userDTO.getEmailPollub()).isPresent();
         boolean ifUserWithExistLogin = this.userRepository.findByLogin(userDTO.getLogin()).isPresent();
@@ -96,7 +97,17 @@ public class UserService {
         Optional<User> userToUpdate = this.userRepository.findByLogin(login);
 
         if (userToUpdate.isPresent()) {
+            String[] noCopy = {"userDetails", "userAddress"};
+
             User user = userToUpdate.get();
+
+            if ((userDTO.getUserAddress() != null) && (userDTO.getUserDetails() != null)){
+                CopyPropertiesTool.copyNonNullProperties(userDTO.getUserDetails(), user.getUserDetails());
+                CopyPropertiesTool.copyNonNullProperties(userDTO.getUserAddress(), user.getUserAddress());
+            }
+
+            userDTO.setUserAddress(null);
+            userDTO.setUserDetails(null);
 
             CopyPropertiesTool.copyNonNullProperties(userDTO, user);
 

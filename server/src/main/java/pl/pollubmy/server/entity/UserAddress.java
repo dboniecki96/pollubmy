@@ -44,6 +44,14 @@ public class UserAddress {
         this.userAddressId = userAddressId;
     }
 
+    public User getUserIdFK() {
+        return userIdFK;
+    }
+
+    public void setUserIdFK(User userIdFK) {
+        this.userIdFK = userIdFK;
+    }
+
     public CountryType getCountry() {
         return Country;
     }
@@ -90,13 +98,5 @@ public class UserAddress {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
-    }
-
-    public User getUserIdFK() {
-        return userIdFK;
-    }
-
-    public void setUserIdFK(User userIdFK) {
-        this.userIdFK = userIdFK;
     }
 }

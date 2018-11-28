@@ -31,10 +31,10 @@ public class UserDetails {
     private String specialization;
 
     @Column(nullable = true)
-    private int year;
+    private Integer year;
 
     @Column(nullable = true)
-    private int term;
+    private Integer term;
 
     private String academicDegree;
 
@@ -88,28 +88,28 @@ public class UserDetails {
         this.specialization = specialization;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public int getTerm() {
+    public Integer getTerm() {
         return term;
     }
 
-    public void setTerm(int term) {
+    public void setTerm(Integer term) {
         this.term = term;
     }
 
-    public LocalDate getFinishDate() {
-        return finishDate;
+    public String getAcademicDegree() {
+        return academicDegree;
     }
 
-    public void setFinishDate(LocalDate finishDate) {
-        this.finishDate = finishDate;
+    public void setAcademicDegree(String academicDegree) {
+        this.academicDegree = academicDegree;
     }
 
     public String getAlbumNumber() {
@@ -128,29 +128,13 @@ public class UserDetails {
         this.startDate = startDate;
     }
 
-    public LocalDate getFinshDate() {
+    public LocalDate getFinishDate() {
         return finishDate;
     }
 
-    public void setFinshDate(LocalDate finshDate) {
-        this.finishDate = finshDate;
+    public void setFinishDate(LocalDate finishDate) {
+        this.finishDate = finishDate;
     }
-
-    public String getAcademicDegree() {
-        return academicDegree;
-    }
-
-    public void setAcademicDegree(String academicDegree) {
-        this.academicDegree = academicDegree;
-    }
-
-/*    public List<HobbyEnum> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<HobbyEnum> hobbies) {
-        this.hobbies = hobbies;
-    }*/
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
@@ -159,4 +143,12 @@ public class UserDetails {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    /*    public List<HobbyEnum> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<HobbyEnum> hobbies) {
+        this.hobbies = hobbies;
+    }*/
 }
