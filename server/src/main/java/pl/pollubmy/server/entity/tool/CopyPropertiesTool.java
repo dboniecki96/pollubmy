@@ -14,13 +14,13 @@ public class CopyPropertiesTool {
     }
 
     public static String[] getNullPropertyNames(Object source) {
-        final BeanWrapper src = new BeanWrapperImpl(source);
-        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+        final BeanWrapper beanWrapperSource = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] propertyDescriptors = beanWrapperSource.getPropertyDescriptors();
 
         Set<String> emptyNames = new HashSet<String>();
-        for (java.beans.PropertyDescriptor pd : pds) {
-            Object srcValue = src.getPropertyValue(pd.getName());
-            if (srcValue == null) emptyNames.add(pd.getName());
+        for (java.beans.PropertyDescriptor singleProperty : propertyDescriptors) {
+            Object srcValue = beanWrapperSource.getPropertyValue(singleProperty.getName());
+            if (srcValue == null) emptyNames.add(singleProperty.getName());
         }
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);

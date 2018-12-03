@@ -10,6 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,6 +35,10 @@ public class User {
     @JsonManagedReference
     @OneToOne(mappedBy = "userIdFK", cascade = CascadeType.ALL)
     private UserDetails userDetails = new UserDetails();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    private List<PrivateLessonOffer> privateLessonOffers = new ArrayList<>();
 
     @NotNull
     @NotEmpty
@@ -60,6 +65,8 @@ public class User {
     private String password;
 
     private boolean isActive = true;
+
+    private Integer rating;
 
     // Constructor
 
@@ -152,6 +159,22 @@ public class User {
         isActive = active;
     }
 
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public List<PrivateLessonOffer> getPrivateLessonOffers() {
+        return privateLessonOffers;
+    }
+
+    public void setPrivateLessonOffers(List<PrivateLessonOffer> privateLessonOffers) {
+        this.privateLessonOffers = privateLessonOffers;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -159,12 +182,14 @@ public class User {
                 ", userRole=" + userRole +
                 ", userAddress=" + userAddress +
                 ", userDetails=" + userDetails +
+                ", privateLessonsOffers=" + privateLessonOffers +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", login='" + login + '\'' +
                 ", emailPollub='" + emailPollub + '\'' +
                 ", password='" + password + '\'' +
                 ", isActive=" + isActive +
+                ", rating=" + rating +
                 '}';
     }
 }

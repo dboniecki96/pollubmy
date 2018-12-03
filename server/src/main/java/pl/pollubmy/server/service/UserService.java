@@ -1,6 +1,5 @@
 package pl.pollubmy.server.service;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,7 +10,6 @@ import pl.pollubmy.server.entity.dto.UserDTOConverter;
 import pl.pollubmy.server.entity.tool.CopyPropertiesTool;
 import pl.pollubmy.server.exceptions.UserFoundException;
 import pl.pollubmy.server.exceptions.UserNotFoundException;
-import pl.pollubmy.server.exceptions.WrongRequestException;
 import pl.pollubmy.server.repository.UserRepository;
 
 import java.util.List;
@@ -83,34 +81,24 @@ public class UserService {
 
     public UserDTO updateUser(UserDTO userDTO, String login) {
 
-       /* if (userDTO.getUserDetails() == null || userDTO.getUserAddress() == null) {
-            throw new WrongRequestException("Empty field userDetailsId or userAddressId");
-        }*/
-
         boolean ifUserWithExistEmail = this.userRepository.findByEmailPollub(userDTO.getEmailPollub()).isPresent();
         boolean ifUserWithExistLogin = this.userRepository.findByLogin(userDTO.getLogin()).isPresent();
 
-        if (ifUserWithExistEmail || ifUserWithExistLogin) {
-            throw new UserFoundException("User with this email or login exist");
-        }
+        if (ifUserWithExistEmail || ifUserWithExistLogin) throw new UserFoundException("User with this email or login exist");
 
         Optional<User> userToUpdate = this.userRepository.findByLogin(login);
 
         if (userToUpdate.isPresent()) {
-            String[] noCopy = {"userDetails", "userAddress"};
-
             User user = userToUpdate.get();
 
-            if ((userDTO.getUserAddress() != null) && (userDTO.getUserDetails() != null)){
+            if ((userDTO.getUserAddress() != null) && (userDTO.getUserDetails() != null)) {
                 CopyPropertiesTool.copyNonNullProperties(userDTO.getUserDetails(), user.getUserDetails());
                 CopyPropertiesTool.copyNonNullProperties(userDTO.getUserAddress(), user.getUserAddress());
             }
 
             userDTO.setUserAddress(null);
             userDTO.setUserDetails(null);
-
             CopyPropertiesTool.copyNonNullProperties(userDTO, user);
-
             this.userRepository.save(user);
 
             return UserDTOConverter.toDTO(user);

@@ -27,12 +27,12 @@ public class RegisterService {
 
     public User createUser(final User user) {
 
-        Optional ifUserWithEmailExist = this.userRepository.findByEmailPollub(user.getEmailPollub());
-        Optional ifUserWithLoginExist = this.userRepository.findByLogin(user.getLogin());
+        Optional ifEmailExist = this.userRepository.findByEmailPollub(user.getEmailPollub());
+        Optional ifLoginExist = this.userRepository.findByLogin(user.getLogin());
 
-        if (ifUserWithEmailExist.isPresent()) {
+        if (ifEmailExist.isPresent()) {
             throw new UserFoundException("User with this email exist.");
-        } else if (ifUserWithLoginExist.isPresent()) {
+        } else if (ifLoginExist.isPresent()) {
             throw new UserFoundException("User with this login exist.");
         } else {
 

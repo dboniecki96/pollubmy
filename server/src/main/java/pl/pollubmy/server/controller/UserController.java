@@ -12,7 +12,7 @@ import pl.pollubmy.server.service.UserService;
 
 import java.security.Principal;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
