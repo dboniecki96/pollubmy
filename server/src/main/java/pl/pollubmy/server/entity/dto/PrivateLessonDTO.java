@@ -2,7 +2,15 @@ package pl.pollubmy.server.entity.dto;
 
 public class PrivateLessonDTO {
 
-    private float price;
+    private String privateLessonId;
+
+    private String firstName;
+
+    private String emailPollub;
+
+    private String phone;
+
+    private Float price;
 
     private Integer time;
 
@@ -14,11 +22,43 @@ public class PrivateLessonDTO {
 
     private String course;
 
-    public float getPrice() {
+    public String getPrivateLessonId() {
+        return privateLessonId;
+    }
+
+    public void setPrivateLessonId(String privateLessonId) {
+        this.privateLessonId = privateLessonId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getEmailPollub() {
+        return emailPollub;
+    }
+
+    public void setEmailPollub(String emailPollub) {
+        this.emailPollub = emailPollub;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

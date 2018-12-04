@@ -7,6 +7,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import pl.pollubmy.server.entity.PrivateLesson;
 
 import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +20,11 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
             UserFoundException.class,
             UserNotFoundException.class,
             UserNotLoginException.class,
-            WrongRequestException.class})
+            WrongRequestException.class,
+            PrivateLessonNotFoundException.class
+    })
     public ResponseEntity<?> handleExceptionUserFound(HttpServletRequest httpServletRequest, Exception ex) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }

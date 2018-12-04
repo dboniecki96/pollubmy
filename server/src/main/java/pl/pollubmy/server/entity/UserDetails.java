@@ -46,6 +46,8 @@ public class UserDetails {
 
     private LocalDate dateOfBirth;
 
+    private String phone;
+
     // Getters and setters
 
     public String getUserDetailsId() {
@@ -151,4 +153,12 @@ public class UserDetails {
     public void setHobbies(List<HobbyEnum> hobbies) {
         this.hobbies = hobbies;
     }*/
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

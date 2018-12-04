@@ -66,8 +66,6 @@ public class User {
 
     private boolean isActive = true;
 
-    private Integer rating;
-
     // Constructor
 
     public User() {
@@ -159,14 +157,6 @@ public class User {
         isActive = active;
     }
 
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
-
     public List<PrivateLessonOffer> getPrivateLessonOffers() {
         return privateLessonOffers;
     }
@@ -182,14 +172,13 @@ public class User {
                 ", userRole=" + userRole +
                 ", userAddress=" + userAddress +
                 ", userDetails=" + userDetails +
-                ", privateLessonsOffers=" + privateLessonOffers +
+                ", privateLessonOffers=" + privateLessonOffers +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", login='" + login + '\'' +
                 ", emailPollub='" + emailPollub + '\'' +
                 ", password='" + password + '\'' +
                 ", isActive=" + isActive +
-                ", rating=" + rating +
                 '}';
     }
 }

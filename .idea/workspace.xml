@@ -2,24 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeb61033-ae82-4604-8919-3da968614c5e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLesson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/studyInformation/FieldOfStudy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/studyInformation/StudyInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/ReaderXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/studyInformation/study.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/PrivateLessonNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonOfferRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/CopyPropertiesTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/CopyPropertiesTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/RegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/server/target/" />
@@ -38,56 +33,17 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-              <folding>
-                <element signature="e#3786#3787#0" expanded="true" />
-                <element signature="e#3828#3829#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="75">
+              <caret line="166" selection-start-line="166" selection-end-line="166" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateLessonService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PrivateLessonService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#332#333#0" expanded="true" />
-                <element signature="e#381#382#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrivateLessonOffer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1003#1004#0" expanded="true" />
-                <element signature="e#949#950#0" expanded="true" />
-                <element signature="e#980#981#0" expanded="true" />
-                <element signature="e#1026#1027#0" expanded="true" />
-                <element signature="e#1066#1067#0" expanded="true" />
-                <element signature="e#1117#1118#0" expanded="true" />
-                <element signature="e#1157#1158#0" expanded="true" />
-                <element signature="e#1230#1231#0" expanded="true" />
-                <element signature="e#1288#1289#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrivateLessonController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+            <state relative-caret-position="154">
+              <caret line="121" column="13" selection-start-line="121" selection-start-column="13" selection-end-line="121" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,74 +51,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/config/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="599">
-              <caret line="73" column="16" lean-forward="true" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrivateLessonRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="65" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrivateLesson.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLesson.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1073">
-              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="24" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#687#688#0" expanded="true" />
-                <element signature="e#749#750#0" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-                <element signature="e#890#891#0" expanded="true" />
-                <element signature="e#931#932#0" expanded="true" />
-                <element signature="e#1256#1257#0" expanded="true" />
-                <element signature="e#1284#1285#0" expanded="true" />
-                <element signature="e#1325#1326#0" expanded="true" />
-                <element signature="e#1359#1360#0" expanded="true" />
-                <element signature="e#1391#1392#0" expanded="true" />
-                <element signature="e#1418#1419#0" expanded="true" />
-                <element signature="e#1459#1460#0" expanded="true" />
-                <element signature="e#1491#1492#0" expanded="true" />
-                <element signature="e#1353#1354#0" expanded="true" />
-                <element signature="e#1387#1388#0" expanded="true" />
-                <element signature="e#1441#1442#0" expanded="true" />
-                <element signature="e#1487#1488#0" expanded="true" />
-                <element signature="e#1635#1636#0" expanded="true" />
-                <element signature="e#1665#1666#0" expanded="true" />
-                <element signature="e#1711#1712#0" expanded="true" />
-                <element signature="e#1749#1750#0" expanded="true" />
-                <element signature="e#1788#1789#0" expanded="true" />
-                <element signature="e#1823#1824#0" expanded="true" />
-                <element signature="e#1879#1880#0" expanded="true" />
-                <element signature="e#1927#1928#0" expanded="true" />
-                <element signature="e#1960#1961#0" expanded="true" />
-                <element signature="e#1989#1990#0" expanded="true" />
-                <element signature="e#2033#2034#0" expanded="true" />
-                <element signature="e#2069#2070#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRole.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserRole.java">
+      <file leaf-file-name="StudyInformation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/studyInformation/StudyInformation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#295#296#0" expanded="true" />
+                <element signature="e#341#342#0" expanded="true" />
+                <element signature="e#379#380#0" expanded="true" />
+                <element signature="e#432#433#0" expanded="true" />
+                <element signature="e#469#470#0" expanded="true" />
+                <element signature="e#541#542#0" expanded="true" />
+                <element signature="e#593#594#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="100" column="57" selection-start-line="100" selection-start-column="57" selection-end-line="100" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrivateLessonController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="59" column="68" lean-forward="true" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,33 +97,33 @@
       <file leaf-file-name="PrivateLessonDTO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            <state relative-caret-position="-142">
+              <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
               <folding>
-                <element signature="e#314#315#0" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#389#390#0" expanded="true" />
-                <element signature="e#421#422#0" expanded="true" />
-                <element signature="e#448#449#0" expanded="true" />
-                <element signature="e#489#490#0" expanded="true" />
-                <element signature="e#521#522#0" expanded="true" />
-                <element signature="e#559#560#0" expanded="true" />
-                <element signature="e#593#594#0" expanded="true" />
-                <element signature="e#647#648#0" expanded="true" />
-                <element signature="e#693#694#0" expanded="true" />
-                <element signature="e#727#728#0" expanded="true" />
-                <element signature="e#757#758#0" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-                <element signature="e#841#842#0" expanded="true" />
-                <element signature="e#880#881#0" expanded="true" />
-                <element signature="e#915#916#0" expanded="true" />
-                <element signature="e#971#972#0" expanded="true" />
-                <element signature="e#1019#1020#0" expanded="true" />
-                <element signature="e#1052#1053#0" expanded="true" />
-                <element signature="e#1081#1082#0" expanded="true" />
-                <element signature="e#1125#1126#0" expanded="true" />
-                <element signature="e#1161#1162#0" expanded="true" />
+                <element signature="e#417#418#0" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
+                <element signature="e#1098#1099#0" expanded="true" />
+                <element signature="e#1139#1140#0" expanded="true" />
+                <element signature="e#1173#1174#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDetails.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrivateLessonDTOConverter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="11" column="89" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -207,8 +131,21 @@
       <file leaf-file-name="RegisterService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/RegisterService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="14">
               <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrivateLessonOffer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="563">
+              <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1617#1618#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -226,11 +163,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cors</find>
-      <find>corsFi</find>
-      <find>ł</find>
-      <find>get</find>
-      <find>getConte</find>
       <find>securit</find>
       <find>acti</find>
       <find>anage</find>
@@ -256,6 +188,11 @@
       <find>ukł</find>
       <find>HES</find>
       <find>pr</find>
+      <find>stream</find>
+      <find>isAct</find>
+      <find>userDTO</find>
+      <find>float</find>
+      <find>ra</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -269,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthenticationProvider.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthenticationEntryPoint.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/LoggedUser.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/UserNotFoundException.java" />
@@ -279,7 +215,6 @@
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/CustomUserDetailsService.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/CopyPropertiesTool.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/WrongRequestException.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" />
         <option value="$PROJECT_DIR$/client/src/app/auth/login/login.component.ts" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserRole.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserToLoginDTO.java" />
@@ -287,18 +222,15 @@
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PasswordDTOConverter.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PasswordDTO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthorizationFilter.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTOConverter.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/enumType/HobbyEnum.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserAddress.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/OfferPrivateLesson.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonsOfferts.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/HelpOffers.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/RegisterService.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/CopyPropertiesTool.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonsOffers.java" />
         <option value="$PROJECT_DIR$/server/src/main/resources/studyInformation/Informatyka.txt" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/studyInformation/FieldOfStudy.java" />
@@ -308,18 +240,23 @@
         <option value="$PROJECT_DIR$/server/src/main/resources/studyInformation/study.xml" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/ReaderXML.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonsOffer.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRepository.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRoleRepository.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonsOffer.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonOfferRepository.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRoleRepository.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/PrivateLessonNotFoundException.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLesson.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTOConverter.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRepository.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonOfferRepository.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java" />
       </list>
     </option>
   </component>
@@ -366,8 +303,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -418,64 +353,32 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pollubmy" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="studyInformation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -682,7 +585,8 @@
       <workItem from="1543497671799" duration="871000" />
       <workItem from="1543610979029" duration="2656000" />
       <workItem from="1543787360442" duration="4511000" />
-      <workItem from="1543844461696" duration="21017000" />
+      <workItem from="1543844461696" duration="21926000" />
+      <workItem from="1543913751260" duration="20290000" />
     </task>
     <task id="LOCAL-00001" summary="Register_01 05.10.2018&#10;Simple register - not tested, not valid">
       <created>1538693751587</created>
@@ -789,11 +693,18 @@
       <option name="project" value="LOCAL" />
       <updated>1543361746324</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="PrivateLesson 03.12.2018 &#10;&#10;Added:&#10;&gt; Create new private lesson&#10;&gt; Send study information">
+      <created>1543869854431</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1543869854431</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414082000" />
+    <option name="totallyTimeSpent" value="435281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -821,7 +732,7 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49853587" weight="0.32838285" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.28517398" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.25945538" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Learn" order="2" />
@@ -857,50 +768,15 @@
     <MESSAGE value="Dashboard&#10;&gt; Get User&#10;&gt; Get All Users&#10;&#10;Corrected:&#10;&gt;JWT Authorization&#10;&gt;Secure endpoints" />
     <MESSAGE value="Dashboard 23.11.2018&#10;To do:&#10;&gt;Hobby List&#10;&gt;Change update" />
     <MESSAGE value="Dashboard 24.11.2018 &#10;&#10;Works&#10;&#10;To additional develop in the future:&#10;&gt; change password&#10;&gt; update user&#10;&gt; change architecture of User, UserDetails, UserAddress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dashboard 24.11.2018 &#10;&#10;Works&#10;&#10;To additional develop in the future:&#10;&gt; change password&#10;&gt; update user&#10;&gt; change architecture of User, UserDetails, UserAddress" />
+    <MESSAGE value="PrivateLesson 03.12.2018 &#10;&#10;Added:&#10;&gt; Create new private lesson&#10;&gt; Send study information" />
+    <option name="LAST_COMMIT_MESSAGE" value="PrivateLesson 03.12.2018 &#10;&#10;Added:&#10;&gt; Create new private lesson&#10;&gt; Send study information" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthenticationEntryPoint.java</url>
-          <line>15</line>
-          <properties />
-          <option name="timeStamp" value="127" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="209" />
+      <option name="time" value="233" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/config/SecurityWebApplicationInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthenticationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/UserFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/enumType/CountryType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -915,16 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthenticationEntryPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/enumType/RoleType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -934,24 +800,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDetailsDTO.java" />
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserAddressDTO.java" />
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PasswordDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthorizationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
@@ -987,26 +839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/enumType/FieldOfStudyType.java" />
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/FieldOfStudy.java" />
-    <entry file="file://$PROJECT_DIR$/server/src/main/resources/studyInformation/Informatyka.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/StudyInformationDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/resources/studyInformation/Informatyka.txt" />
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/StudyInformationDTO.java" />
     <entry file="file://$PROJECT_DIR$/server/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1021,23 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/ReaderXML.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRoleRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/2.0.6.RELEASE/spring-data-jpa-2.0.6.RELEASE.jar!/org/springframework/data/jpa/repository/JpaRepository.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
@@ -1045,52 +862,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/CopyPropertiesTool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/RegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="153" column="1" selection-start-line="153" selection-start-column="1" selection-end-line="153" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserLogged.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1111,9 +886,235 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/studyInformation/StudyInformation.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="73" column="16" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthorizationFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/SecurityParameters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRoleRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/tool/ReaderXML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1364">
+          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/PrivateLessonNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+          <folding>
+            <element signature="e#199#200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTOConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserLogged.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLesson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1414#1415#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+            <element signature="e#2091#2092#0" expanded="true" />
+            <element signature="e#2127#2128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonOfferRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/security/JwtAuthenticationEntryPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="59" column="68" lean-forward="true" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1617#1618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="11" column="89" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-142">
+          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+          <folding>
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/RegisterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="100" column="57" selection-start-line="100" selection-start-column="57" selection-end-line="100" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/studyInformation/StudyInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
           <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1128,172 +1129,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTOConverter.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLessonOffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1117#1118#0" expanded="true" />
-            <element signature="e#1157#1158#0" expanded="true" />
-            <element signature="e#1230#1231#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/PrivateLesson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1073">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="24" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-            <element signature="e#931#932#0" expanded="true" />
-            <element signature="e#1256#1257#0" expanded="true" />
-            <element signature="e#1284#1285#0" expanded="true" />
-            <element signature="e#1325#1326#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-            <element signature="e#1391#1392#0" expanded="true" />
-            <element signature="e#1418#1419#0" expanded="true" />
-            <element signature="e#1459#1460#0" expanded="true" />
-            <element signature="e#1491#1492#0" expanded="true" />
-            <element signature="e#1353#1354#0" expanded="true" />
-            <element signature="e#1387#1388#0" expanded="true" />
-            <element signature="e#1441#1442#0" expanded="true" />
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#1665#1666#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#1749#1750#0" expanded="true" />
-            <element signature="e#1788#1789#0" expanded="true" />
-            <element signature="e#1823#1824#0" expanded="true" />
-            <element signature="e#1879#1880#0" expanded="true" />
-            <element signature="e#1927#1928#0" expanded="true" />
-            <element signature="e#1960#1961#0" expanded="true" />
-            <element signature="e#1989#1990#0" expanded="true" />
-            <element signature="e#2033#2034#0" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/PrivateLessonRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="65" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/RegisterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        <state relative-caret-position="75">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#332#333#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="73" column="16" lean-forward="true" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding>
-            <element signature="e#3786#3787#0" expanded="true" />
-            <element signature="e#3828#3829#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding>
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#389#390#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#693#694#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-            <element signature="e#880#881#0" expanded="true" />
-            <element signature="e#915#916#0" expanded="true" />
-            <element signature="e#971#972#0" expanded="true" />
-            <element signature="e#1019#1020#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1161#1162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+        <state relative-caret-position="154">
+          <caret line="121" column="13" selection-start-line="121" selection-start-column="13" selection-end-line="121" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

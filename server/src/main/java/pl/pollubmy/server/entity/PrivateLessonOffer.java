@@ -25,6 +25,8 @@ public class PrivateLessonOffer {
     @JoinColumn(name = "privateLessonId")
     private PrivateLesson privateLessonIdFK;
 
+    private boolean isActive = true;
+
     public PrivateLessonOffer() {
     }
 
@@ -55,5 +57,13 @@ public class PrivateLessonOffer {
 
     public void setPrivateLessonIdFK(PrivateLesson privateLessonIdFK) {
         this.privateLessonIdFK = privateLessonIdFK;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
