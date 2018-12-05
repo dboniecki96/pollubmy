@@ -44,7 +44,7 @@ public class UserService {
         List<User> usersList = userRepository.findAll().stream().filter(user -> user.isActive()).collect(Collectors.toList());
 
         if (usersList.isEmpty()) {
-            throw new UserNotFoundException("No user in database");
+            throw new UserNotFoundException("User with this login not found");
         } else {
             return usersList.stream().map(UserDTOConverter::toDTO).collect(Collectors.toList());
         }
@@ -76,7 +76,6 @@ public class UserService {
         } else {
             throw new UserNotFoundException("User with this login not found");
         }
-
     }
 
     public UserDTO updateUser(UserDTO userDTO, String login) {
@@ -84,7 +83,8 @@ public class UserService {
         boolean ifUserWithExistEmail = this.userRepository.findByEmailPollub(userDTO.getEmailPollub()).isPresent();
         boolean ifUserWithExistLogin = this.userRepository.findByLogin(userDTO.getLogin()).isPresent();
 
-        if (ifUserWithExistEmail || ifUserWithExistLogin) throw new UserFoundException("User with this email or login exist");
+        if (ifUserWithExistEmail || ifUserWithExistLogin)
+            throw new UserFoundException("User with this email or login exist");
 
         Optional<User> userToUpdate = this.userRepository.findByLogin(login);
 

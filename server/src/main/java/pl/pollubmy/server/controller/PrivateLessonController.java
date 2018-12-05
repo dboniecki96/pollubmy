@@ -56,7 +56,7 @@ public class PrivateLessonController {
 
     @PutMapping
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<?> editPost(@RequestBody final PrivateLessonDTO privateLessonDTO){
-         return new ResponseEntity<>(this.privateLessonService.editLesson(privateLessonDTO), HttpStatus.OK);
+    public ResponseEntity<?> editPost(@RequestBody final PrivateLessonDTO privateLessonDTO) {
+        return new ResponseEntity<>(this.privateLessonService.editLesson(privateLessonDTO), HttpStatus.OK);
     }
 }

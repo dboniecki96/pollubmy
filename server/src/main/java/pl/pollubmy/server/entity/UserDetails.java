@@ -9,8 +9,6 @@ import java.time.LocalDate;
 @Entity
 public class UserDetails {
 
-    //Fields
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -47,8 +45,6 @@ public class UserDetails {
     private LocalDate dateOfBirth;
 
     private String phone;
-
-    // Getters and setters
 
     public String getUserDetailsId() {
         return userDetailsId;

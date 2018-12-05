@@ -19,7 +19,6 @@ public class PrivateLessonDTOConverter {
         privateLessonDTO.setEmailPollub(privateLessonOffer.getUserIdFK().getEmailPollub());
         privateLessonDTO.setPhone(privateLessonOffer.getUserIdFK().getUserDetails().getPhone());
         privateLessonDTO.setFirstName(privateLessonOffer.getUserIdFK().getFirstName());
-
         return privateLessonDTO;
     }
 }

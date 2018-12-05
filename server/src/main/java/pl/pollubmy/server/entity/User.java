@@ -16,8 +16,6 @@ import java.util.List;
 @Entity
 public class User {
 
-    //Fields
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -66,14 +64,10 @@ public class User {
 
     private boolean isActive = true;
 
-    // Constructor
-
     public User() {
         this.getUserDetails().setUserIdFK(this);
         this.getUserAddress().setUserIdFK(this);
     }
-
-    // Getters and setters
 
     public String getUserId() {
         return userId;

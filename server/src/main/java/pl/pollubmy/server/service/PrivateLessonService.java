@@ -117,7 +117,7 @@ public class PrivateLessonService {
                 newValuesPrivateLesson.setPrivateLessonId(null);
                 CopyPropertiesTool.copyNonNullProperties(newValuesPrivateLesson, privateLessonToEdit.get());
                 return this.privateLessonRepository.save(privateLessonToEdit.get());
-            }else{
+            } else {
                 throw new PrivateLessonNotFoundException("Private lesson not found");
             }
         } else {

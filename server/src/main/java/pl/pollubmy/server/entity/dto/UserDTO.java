@@ -19,12 +19,8 @@ public class UserDTO {
 
     private UserAddress userAddress;
 
-    //Constructor
-
     public UserDTO() {
     }
-
-    //Getters and setters
 
     public String getUserId() {
         return userId;

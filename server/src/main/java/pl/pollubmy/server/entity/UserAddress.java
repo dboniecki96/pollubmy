@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Entity
 public class UserAddress {
 
-    //Fields
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -33,8 +31,6 @@ public class UserAddress {
     private String apartmentNumber;
 
     private String postalCode;
-
-    // Getters and setters
 
     public String getUserAddressId() {
         return userAddressId;
