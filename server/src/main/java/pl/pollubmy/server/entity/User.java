@@ -38,6 +38,14 @@ public class User {
     @OneToMany(mappedBy = "userIdFK", cascade = CascadeType.ALL)
     private List<PrivateLessonOffer> privateLessonOffers = new ArrayList<>();
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    private List<ForumPost> forumPosts = new ArrayList<>();
+
+    @JsonManagedReference(value = "user-comment")
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
+
     @NotNull
     @NotEmpty
     private String firstName;
@@ -151,12 +159,31 @@ public class User {
         isActive = active;
     }
 
+    @JsonIgnore
     public List<PrivateLessonOffer> getPrivateLessonOffers() {
         return privateLessonOffers;
     }
 
     public void setPrivateLessonOffers(List<PrivateLessonOffer> privateLessonOffers) {
         this.privateLessonOffers = privateLessonOffers;
+    }
+
+    @JsonIgnore
+    public List<ForumPost> getForumPosts() {
+        return forumPosts;
+    }
+
+    public void setForumPosts(List<ForumPost> forumPosts) {
+        this.forumPosts = forumPosts;
+    }
+
+    @JsonIgnore
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override
@@ -167,6 +194,8 @@ public class User {
                 ", userAddress=" + userAddress +
                 ", userDetails=" + userDetails +
                 ", privateLessonOffers=" + privateLessonOffers +
+                ", forumPosts=" + forumPosts +
+                ", comments=" + comments +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", login='" + login + '\'' +
