@@ -34,16 +34,18 @@ public class ForumPostService {
         addPost(newPostBody, user.get());
     }
 
-    public List getAllPost() {
+    public List<ForumPostDTO> getAllPost() {
         List<ForumPost> allForumPosts = this.forumPostRepository.findAll().stream().filter(ForumPost::isActive).collect(Collectors.toList());
         checkIfPostsExist(allForumPosts);
         return convertPostToPostDTO(allForumPosts);
     }
 
-    public List getMyPost(String userLogin) {
+    public List<ForumPostDTO> getMyPost(String userLogin) {
         Optional<User> user = this.userRepository.findByLogin(userLogin);
-        checkIfUserFound(user);
-        return checkIfUserHasPostsAndGetIfExists(user.get());
+        User foundUser = checkIfUserFound(user);
+        //return checkIfUserHasPostsAndGetIfExists(user.get());
+        List userPosts= checkIfUserHasPosts(foundUser);
+        return convertPostToPostDTO(userPosts);
     }
 
     public void deactivatePost(String deactivatePostId) {
@@ -54,15 +56,14 @@ public class ForumPostService {
     }
 
 
-    private List convertPostToPostDTO(List<ForumPost> allForumPosts) {
+    private List<ForumPostDTO> convertPostToPostDTO(List<ForumPost> allForumPosts) {
 
-        List allForumPostsToReturn = new ArrayList();
+        ArrayList<ForumPostDTO> allForumPostsToReturn = new ArrayList<>();
 
         for (ForumPost fr : allForumPosts) {
             ForumPostDTO forumPostDTO = ForumPostDTOConverter.toDTO(fr.getUserIdFk(), fr);
             allForumPostsToReturn.add(forumPostDTO);
         }
-
         return allForumPostsToReturn;
     }
 
@@ -70,10 +71,11 @@ public class ForumPostService {
         if (allForumPosts.isEmpty()) throw new ForumPostNotFoundException("Posts not found");
     }
 
-    private void checkIfUserFound(Optional<User> user) {
+    private User checkIfUserFound(Optional<User> user) {
         if (!user.isPresent()) {
             throw new UserNotFoundException("User with this login not found");
         }
+        return user.get();
     }
 
     private void addPost(ForumPost newPostBody, User user) {
@@ -82,12 +84,12 @@ public class ForumPostService {
         this.userRepository.save(user);
     }
 
-    private List checkIfUserHasPostsAndGetIfExists(User user) {
+    private List checkIfUserHasPosts(User user) {
         List<ForumPost> userPosts = this.forumPostRepository.findAll().stream()
-                .filter(post -> post.getUserIdFk().equals(user.getUserId()))
+                .filter(post -> post.getUserIdFk().getUserId().equals(user.getUserId()))
                 .filter(ForumPost::isActive)
                 .collect(Collectors.toList());
         if (userPosts.isEmpty()) throw new ForumPostNotFoundException("User's posts not found");
-        return convertPostToPostDTO(userPosts);
+        return userPosts;
     }
 }
