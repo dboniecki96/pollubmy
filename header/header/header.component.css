@@ -1,0 +1,19 @@
+
+img{
+    width:25px;
+    height:25px;
+    margin-bottom:6px;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-family: 'Dosis', sans-serif;
+}
+.container-fluid{
+    font-size: 18px;
+}
+.icon{
+   padding: 10px;
+}
+nav .navbar-nav li a{
+    color: rgb(207, 203, 141);
+}
