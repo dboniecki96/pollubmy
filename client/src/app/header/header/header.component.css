@@ -1,6 +1,4 @@
-.logoutButton{
-    cursor: pointer;
-}
+
 img{
     width:25px;
     height:25px;
@@ -18,10 +16,4 @@ img{
 }
 nav .navbar-nav li a{
     color: rgb(207, 203, 141);
-}
-.logoutButton{
-    font-weight: bold;
-}
-.nav-item{
-    margin : 0 20px 0 20px;
 }

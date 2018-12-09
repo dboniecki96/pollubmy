@@ -4,17 +4,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-  
+import { PrivatelessonsComponent } from './services/privatelessons/privatelessons.component';
+
 const routes: Routes = [
   { path: '', component: AppComponent },
-  { path: '/register', component: RegisterComponent},
-  { path: '/login', component: LoginComponent}
+  { path: '', component: RegisterComponent },
+  { path: '', component: LoginComponent },
+  { path: '', component: PrivatelessonsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports:
-  [RouterModule]
-  
+    [RouterModule]
+
 })
 export class AppRoutingModule { }
