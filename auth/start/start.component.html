@@ -1,0 +1,18 @@
+<div class="container" *ngIf="!(isRegisterButtonClicked || isLoginLinkClicked)">
+  <div class="row justify-content-center">
+      <div class="jumbotron justify-content-center">
+        <div class="row justify-content-center">
+            <h3 class="text-center">Dołącz do naszej społeczności!</h3>
+            <p class="text-center">
+              Jeżeli jesteś studentem Politechniki Lubelskiej,
+              dołącz do społeczności akademickiej i bądź na bieżąco
+              ze sprawami organizacyjnymi oraz naukowymi już dziś XD
+            </p>  
+        </div>
+        <div class="row justify-content-center">
+            <button class="btn btn-primary" (click)="onClickRegisterButton()" routerLink="/register">Zarejestruj się</button>
+        </div>
+        <p class="text-center">Jeżeli jesteś już w społeczności, możesz się<a class="btn" (click)="onClickLoginButton()" routerLink="/login">zalogować</a></p>
+        </div>
+  </div>
+</div>
