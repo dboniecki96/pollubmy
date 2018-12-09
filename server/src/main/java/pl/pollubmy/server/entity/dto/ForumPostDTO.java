@@ -21,6 +21,8 @@ public class ForumPostDTO {
 
     private String userLogin;
 
+    private String title;
+
     public String getForumPostId() {
         return forumPostId;
     }
@@ -75,5 +77,13 @@ public class ForumPostDTO {
 
     public void setUserLogin(String userLogin) {
         this.userLogin = userLogin;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

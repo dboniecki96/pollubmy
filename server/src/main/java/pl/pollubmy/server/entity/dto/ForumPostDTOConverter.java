@@ -17,6 +17,7 @@ public class ForumPostDTOConverter {
         forumPostDTO.setComments(forumPost.getComments());
         forumPostDTO.setAddPostTime(forumPost.getAddPostTime());
         forumPostDTO.setPostText(forumPost.getPostText());
+        forumPostDTO.setTitle(forumPost.getTitle());
         return forumPostDTO;
     }
 }

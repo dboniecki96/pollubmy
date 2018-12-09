@@ -40,6 +40,8 @@ public class ForumPost {
 
     private boolean isActive = true;
 
+    private String title;
+
     public String getForumPostId() {
         return forumPostId;
     }
@@ -90,7 +92,6 @@ public class ForumPost {
         this.postText = postText;
     }
 
-
     public List<Comment> getComments() {
         return comments;
     }
@@ -105,5 +106,13 @@ public class ForumPost {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
