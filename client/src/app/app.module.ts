@@ -1,23 +1,20 @@
+import { AppRoutingModule } from './app.routing.module';
+import { LoginService } from './auth/login/login.service';
+import { LoginGuard } from './auth/login/login-guard.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 import { StartComponent } from './auth/start/start.component';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header/header.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
-import { Router, RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RegisterService } from './auth/register/register.service';
-import { PrivatelessonsComponent } from './services/privatelessons/privatelessons.component';
-import { CompareValidatorDirective } from './shared/compare-validator.directive';
-
-const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: `privatelessons`, component: PrivatelessonsComponent }
-]
+import {FormsModule} from '@angular/forms';
+import { UserDetailsComponent } from './dashboard/user-details/user-details.component';
+import { ProfileDetailsComponent } from './dashboard/user-details/profile-details/profile-details.component';
+import { LessonsDetailsComponent } from './dashboard/user-details/lessons-details/lessons-details.component';
+import { PostsDetailsComponent } from './dashboard/user-details/posts-details/posts-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,19 +22,20 @@ const routes: Routes = [
     RegisterComponent,
     LoginComponent,
     StartComponent,
-    PrivatelessonsComponent,
-    CompareValidatorDirective,
+    DashboardComponent,
+    UserDetailsComponent,
+    ProfileDetailsComponent,
+    LessonsDetailsComponent,
+    PostsDetailsComponent,
+
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [RegisterService],
+  providers: [LoginService,LoginGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule { }
