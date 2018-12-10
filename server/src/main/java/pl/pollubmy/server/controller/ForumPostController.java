@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pollubmy.server.entity.ForumPost;
 import pl.pollubmy.server.entity.UserLogged;
+import pl.pollubmy.server.entity.dto.ForumPostDTO;
 import pl.pollubmy.server.service.ForumPostService;
 
 import java.security.Principal;
@@ -39,10 +40,26 @@ public class ForumPostController {
         return new ResponseEntity<>(this.forumPostService.getMyPost(userLogin), HttpStatus.OK);
     }
 
-    @PatchMapping
+    @PatchMapping("/{deactivatePostId}")
     public ResponseEntity<?> deletePost(final Principal userLogged, @PathVariable final String deactivatePostId) {
         String userLogin = UserLogged.getLogin(userLogged);
-        this.forumPostService.deactivatePost(deactivatePostId);
+        this.forumPostService.deactivatePost(userLogin, deactivatePostId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updatePost(final Principal userLogged, @RequestBody final ForumPostDTO updatePost) {
+        String userLogin = UserLogged.getLogin(userLogged);
+        return new ResponseEntity<>(this.forumPostService.updatePost(userLogin, updatePost), HttpStatus.OK);
+    }
+
+    @PatchMapping("/rate/{ratingPostId}")
+    public ResponseEntity<?> ratePost(
+            final Principal userLogged,
+            @PathVariable final String ratingPostId,
+            @RequestParam(value = "rate", required = true) final String rate) {
+        String userLogin = UserLogged.getLogin(userLogged);
+        this.forumPostService.ratePost(userLogin, ratingPostId, rate);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

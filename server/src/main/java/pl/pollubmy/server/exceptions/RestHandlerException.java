@@ -17,11 +17,11 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
             UserNotLoginException.class,
             WrongRequestException.class,
             PrivateLessonNotFoundException.class,
-            ForumPostNotFoundException.class
+            ForumPostNotFoundException.class,
+            WrongRatingException.class
     })
-    public ResponseEntity<?> handleExceptionUserFound(HttpServletRequest httpServletRequest, Exception ex) {
+    public ResponseEntity<?> handleException(HttpServletRequest httpServletRequest, Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
-
 }
 

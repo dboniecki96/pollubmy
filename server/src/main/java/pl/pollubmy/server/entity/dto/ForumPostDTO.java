@@ -13,6 +13,8 @@ public class ForumPostDTO {
 
     private String category;
 
+    private String title;
+
     private LocalDateTime addPostTime;
 
     private Integer points;
@@ -20,8 +22,6 @@ public class ForumPostDTO {
     private String postText;
 
     private String userLogin;
-
-    private String title;
 
     public String getForumPostId() {
         return forumPostId;

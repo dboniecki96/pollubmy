@@ -72,6 +72,10 @@ public class User {
 
     private boolean isActive = true;
 
+    @OneToOne(mappedBy = "userIdFk")
+    @JsonIgnore
+    private ForumPostRating forumPostRating;
+
     public User() {
         this.getUserDetails().setUserIdFK(this);
         this.getUserAddress().setUserIdFK(this);
@@ -184,6 +188,14 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public ForumPostRating getForumPostRating() {
+        return forumPostRating;
+    }
+
+    public void setForumPostRating(ForumPostRating forumPostRating) {
+        this.forumPostRating = forumPostRating;
     }
 
     @Override
