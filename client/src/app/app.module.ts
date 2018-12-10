@@ -10,13 +10,11 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RegisterService } from './auth/register/register.service';
-import { PrivatelessonsComponent } from './services/privatelessons/privatelessons.component';
 import { CompareValidatorDirective } from './shared/compare-validator.directive';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: `privatelessons`, component: PrivatelessonsComponent }
 ]
 @NgModule({
   declarations: [
@@ -25,7 +23,6 @@ const routes: Routes = [
     RegisterComponent,
     LoginComponent,
     StartComponent,
-    PrivatelessonsComponent,
     CompareValidatorDirective,
   ],
   imports: [
