@@ -18,7 +18,8 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
             WrongRequestException.class,
             PrivateLessonNotFoundException.class,
             ForumPostNotFoundException.class,
-            WrongRatingException.class
+            WrongRatingException.class,
+            CommentNotFoundException.class
     })
     public ResponseEntity<?> handleException(HttpServletRequest httpServletRequest, Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);

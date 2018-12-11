@@ -46,6 +46,14 @@ public class User {
     @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
+    @OneToOne(mappedBy = "userIdFk")
+    @JsonIgnore
+    private ForumPostRating forumPostRating;
+
+    @OneToOne(mappedBy = "userIdFk")
+    @JsonIgnore
+    private CommentRating commentRating;
+
     @NotNull
     @NotEmpty
     private String firstName;
@@ -72,9 +80,7 @@ public class User {
 
     private boolean isActive = true;
 
-    @OneToOne(mappedBy = "userIdFk")
-    @JsonIgnore
-    private ForumPostRating forumPostRating;
+
 
     public User() {
         this.getUserDetails().setUserIdFK(this);
@@ -196,6 +202,14 @@ public class User {
 
     public void setForumPostRating(ForumPostRating forumPostRating) {
         this.forumPostRating = forumPostRating;
+    }
+
+    public CommentRating getCommentRating() {
+        return commentRating;
+    }
+
+    public void setCommentRating(CommentRating commentRating) {
+        this.commentRating = commentRating;
     }
 
     @Override

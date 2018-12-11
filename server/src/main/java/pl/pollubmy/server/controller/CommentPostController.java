@@ -46,4 +46,14 @@ public class CommentPostController {
         String userLogin = UserLogged.getLogin(userLogged);
         return new ResponseEntity<>(this.commentPostService.editComment(userLogin, commentToEdit, commentId), HttpStatus.OK);
     }
+
+    @PatchMapping("/rate/{ratingCommentId}")
+    public ResponseEntity<?> rateComment(
+            final Principal userLogged,
+            @PathVariable final String ratingCommentId,
+            @RequestParam(value = "rate", required = true) final String rate) {
+        String userLogin = UserLogged.getLogin(userLogged);
+        this.commentPostService.rateComment(userLogin, ratingCommentId, rate);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

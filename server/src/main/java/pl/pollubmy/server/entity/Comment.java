@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -26,6 +27,10 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "userIdFk")
     private User userIdFk;
+
+    @OneToMany(mappedBy = "commentIdFk", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<CommentRating> commentRatings;
 
     private String text;
 
@@ -92,5 +97,13 @@ public class Comment {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public List<CommentRating> getCommentRatings() {
+        return commentRatings;
+    }
+
+    public void setCommentRatings(List<CommentRating> commentRatings) {
+        this.commentRatings = commentRatings;
     }
 }
