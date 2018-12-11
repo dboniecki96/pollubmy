@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.pollubmy.server.entity.Comment;
 import pl.pollubmy.server.entity.UserLogged;
-import pl.pollubmy.server.entity.dto.CommentDTOTextToEdit;
+import pl.pollubmy.server.entity.dto.CommentTextToEditDTO;
 import pl.pollubmy.server.service.CommentPostService;
 
 import java.security.Principal;
@@ -41,7 +41,7 @@ public class CommentPostController {
     @PutMapping("/{commentId}")
     public ResponseEntity<?> editOwnComment(
             final Principal userLogged,
-            @RequestBody final CommentDTOTextToEdit commentToEdit,
+            @RequestBody final CommentTextToEditDTO commentToEdit,
             @PathVariable final String commentId) {
         String userLogin = UserLogged.getLogin(userLogged);
         return new ResponseEntity<>(this.commentPostService.editComment(userLogin, commentToEdit, commentId), HttpStatus.OK);

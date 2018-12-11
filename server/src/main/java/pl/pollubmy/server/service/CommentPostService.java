@@ -8,7 +8,7 @@ import pl.pollubmy.server.entity.ForumPost;
 import pl.pollubmy.server.entity.User;
 import pl.pollubmy.server.entity.dto.CommentDTO;
 import pl.pollubmy.server.entity.dto.CommentDTOConverter;
-import pl.pollubmy.server.entity.dto.CommentDTOTextToEdit;
+import pl.pollubmy.server.entity.dto.CommentTextToEditDTO;
 import pl.pollubmy.server.exceptions.CommentNotFoundException;
 import pl.pollubmy.server.exceptions.ForumPostNotFoundException;
 import pl.pollubmy.server.exceptions.UserNotFoundException;
@@ -85,7 +85,7 @@ public class CommentPostService {
         }
     }
 
-    public CommentDTO editComment(String userLogin, CommentDTOTextToEdit commentToEdit, String commentId) {
+    public CommentDTO editComment(String userLogin, CommentTextToEditDTO commentToEdit, String commentId) {
         User editCommentUser = checkIfUserExist(userLogin);
         Comment comment = checkIfCommentExist(commentId);
         checkIfCommentBelongToUser(editCommentUser, comment);

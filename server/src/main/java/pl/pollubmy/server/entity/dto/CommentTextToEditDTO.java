@@ -1,6 +1,6 @@
 package pl.pollubmy.server.entity.dto;
 
-public class CommentDTOTextToEdit {
+public class CommentTextToEditDTO {
 
     private String text;
 
