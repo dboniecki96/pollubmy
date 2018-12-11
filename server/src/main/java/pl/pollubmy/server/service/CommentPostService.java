@@ -49,7 +49,7 @@ public class CommentPostService {
         newComment.getUserIdFk().getComments().add(newComment);
 
         this.commentRepository.save(newComment);
-        return CommentDTOConverter.toDTO(newComment, commentingUser);
+        return CommentDTOConverter.toDTO(newComment);
     }
 
 
@@ -91,7 +91,7 @@ public class CommentPostService {
         checkIfCommentBelongToUser(editCommentUser, comment);
         comment.setText(commentToEdit.getText());
         this.commentRepository.save(comment);
-        return CommentDTOConverter.toDTO(comment, editCommentUser);
+        return CommentDTOConverter.toDTO(comment);
     }
 
 

@@ -39,16 +39,17 @@ public class ForumPostService {
         addPost(newPostBody, foundUser);
     }
 
-    public List<ForumPostDTO> getAllPost() {
+    public List<ForumPostDTO> getAllPost(String userLogin) {
+        User foundUser = checkIfUserExist(userLogin);
         List<ForumPost> allForumPosts = this.forumPostRepository.findAll().stream().filter(ForumPost::isActive).collect(Collectors.toList());
         checkIfPostsExist(allForumPosts);
-        return convertPostToPostDTO(allForumPosts);
+        return convertPostToPostDTO(allForumPosts, foundUser);
     }
 
     public List<ForumPostDTO> getMyPost(String userLogin) {
         User foundUser = checkIfUserExist(userLogin);
         List<ForumPost> userPosts = checkIfUserHasPosts(foundUser);
-        return convertPostToPostDTO(userPosts);
+        return convertPostToPostDTO(userPosts, foundUser);
     }
 
     public void deactivatePost(String userLogin, String deactivatePostId) {
@@ -122,12 +123,12 @@ public class ForumPostService {
             throw new ForumPostNotFoundException("This post doesn't belong to this user");
     }
 
-    private List<ForumPostDTO> convertPostToPostDTO(List<ForumPost> allForumPosts) {
+    private List<ForumPostDTO> convertPostToPostDTO(List<ForumPost> allForumPosts, User userLogged) {
 
         ArrayList<ForumPostDTO> allForumPostsToReturn = new ArrayList<>();
 
         for (ForumPost fr : allForumPosts) {
-            ForumPostDTO forumPostDTO = ForumPostDTOConverter.toDTO(fr.getUserIdFk(), fr);
+            ForumPostDTO forumPostDTO = ForumPostDTOConverter.toDTO(fr, userLogged);
             allForumPostsToReturn.add(forumPostDTO);
         }
         return allForumPostsToReturn;

@@ -11,9 +11,9 @@ public class ForumPostDTOConverter {
     public ForumPostDTOConverter() {
     }
 
-    public static ForumPostDTO toDTO(User user, ForumPost forumPost) {
+    public static ForumPostDTO toDTO(ForumPost forumPost, User user) {
         ForumPostDTO forumPostDTO = new ForumPostDTO();
-        forumPostDTO.setUserLogin(user.getLogin());
+        forumPostDTO.setUserLogin(forumPost.getUserIdFk().getLogin());
         forumPostDTO.setForumPostId(forumPost.getForumPostId());
         forumPostDTO.setCategory(forumPost.getCategory());
         forumPostDTO.setPoints(forumPost.getPoints());
@@ -24,8 +24,12 @@ public class ForumPostDTOConverter {
         List<Comment> commentList = forumPost.getComments();
 
         for(Comment comment : commentList) {
+
             if(comment.isActive()){
-                CommentDTO commentAfterConvertToDTO = CommentDTOConverter.toDTO(comment, user);
+                CommentDTO commentAfterConvertToDTO = CommentDTOConverter.toDTO(comment);
+                if(!comment.getUserIdFk().getUserId().equals(user.getUserId())){
+                    commentAfterConvertToDTO.setOwner(false);
+                }
                 forumPostDTO.getCommentsDTO().add(commentAfterConvertToDTO);
             }
         }

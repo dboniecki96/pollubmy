@@ -1,5 +1,7 @@
 package pl.pollubmy.server.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,8 +32,9 @@ public class ForumPostController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllPost() {
-        return new ResponseEntity<>(this.forumPostService.getAllPost(), HttpStatus.OK);
+    public ResponseEntity<?> getAllPost(final Principal userLogged) {
+        String userLogin = UserLogged.getLogin(userLogged);
+        return new ResponseEntity<>(this.forumPostService.getAllPost(userLogin), HttpStatus.OK);
     }
 
     @GetMapping("/my")

@@ -14,6 +14,8 @@ public class CommentDTO {
 
     private String userLogin;
 
+    private boolean owner = true;
+
     public String getCommentId() {
         return commentId;
     }
@@ -52,5 +54,13 @@ public class CommentDTO {
 
     public void setUserLogin(String userLogin) {
         this.userLogin = userLogin;
+    }
+
+    public boolean isOwner() {
+        return owner;
+    }
+
+    public void setOwner(boolean owner) {
+        this.owner = owner;
     }
 }
