@@ -1,15 +1,14 @@
 package pl.pollubmy.server.entity.dto;
 
-import pl.pollubmy.server.entity.Comment;
-
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ForumPostDTO {
 
     private String forumPostId;
 
-    private List<Comment> comments;
+    private List<CommentDTO> commentsDTO = new ArrayList<>();
 
     private String category;
 
@@ -31,12 +30,12 @@ public class ForumPostDTO {
         this.forumPostId = forumPostId;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public List<CommentDTO> getCommentsDTO() {
+        return commentsDTO;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setCommentsDTO(List<CommentDTO> commentsDTO) {
+        this.commentsDTO = commentsDTO;
     }
 
     public String getCategory() {

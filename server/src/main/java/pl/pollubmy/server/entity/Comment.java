@@ -1,6 +1,7 @@
 package pl.pollubmy.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,9 +30,12 @@ public class Comment {
     private String text;
 
     @DateTimeFormat
-    private LocalDateTime addPostTime = LocalDateTime.now();
+    private LocalDateTime postTime;
 
     private Integer points = 0;
+
+    @JsonIgnore
+    private boolean isActive = true;
 
     public String getCommentId() {
         return commentId;
@@ -49,12 +53,12 @@ public class Comment {
         this.text = text;
     }
 
-    public LocalDateTime getAddPostTime() {
-        return addPostTime;
+    public LocalDateTime getPostTime() {
+        return postTime;
     }
 
-    public void setAddPostTime(LocalDateTime addPostTime) {
-        this.addPostTime = addPostTime;
+    public void setPostTime(LocalDateTime postTime) {
+        this.postTime = postTime;
     }
 
     public Integer getPoints() {
@@ -80,5 +84,13 @@ public class Comment {
 
     public void setUserIdFk(User userIdFk) {
         this.userIdFk = userIdFk;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
