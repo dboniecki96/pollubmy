@@ -22,7 +22,7 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
             CommentNotFoundException.class,
     })
     public ResponseEntity<?> handleException(HttpServletRequest httpServletRequest, Exception ex) {
-        return new ResponseEntity<>(ex, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = FileStorageException.class)
