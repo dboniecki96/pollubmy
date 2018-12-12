@@ -19,10 +19,15 @@ public class RestHandlerException extends ResponseEntityExceptionHandler {
             PrivateLessonNotFoundException.class,
             ForumPostNotFoundException.class,
             WrongRatingException.class,
-            CommentNotFoundException.class
+            CommentNotFoundException.class,
     })
     public ResponseEntity<?> handleException(HttpServletRequest httpServletRequest, Exception ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ex, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = FileStorageException.class)
+    public ResponseEntity<?> handleFileNotFoundInDatabase(HttpServletRequest httpServletRequest, Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
 

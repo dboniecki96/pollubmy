@@ -54,6 +54,10 @@ public class User {
     @JsonIgnore
     private CommentRating commentRating;
 
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<FileInformation> filesInformation = new ArrayList<>();
+
     @NotNull
     @NotEmpty
     private String firstName;
@@ -79,7 +83,6 @@ public class User {
     private String password;
 
     private boolean isActive = true;
-
 
 
     public User() {
@@ -210,6 +213,14 @@ public class User {
 
     public void setCommentRating(CommentRating commentRating) {
         this.commentRating = commentRating;
+    }
+
+    public List<FileInformation> getFilesInformation() {
+        return filesInformation;
+    }
+
+    public void setFilesInformation(List<FileInformation> filesInformation) {
+        this.filesInformation = filesInformation;
     }
 
     @Override
