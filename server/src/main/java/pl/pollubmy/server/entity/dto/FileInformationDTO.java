@@ -1,8 +1,10 @@
 package pl.pollubmy.server.entity.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class FileInformationDTO {
 
     private String fileInformationId;
@@ -17,6 +19,5 @@ public class FileInformationDTO {
 
     private String fileName;
 
-    private String fileType;
-
+    private boolean owner = true;
 }

@@ -7,6 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 import pl.pollubmy.server.entity.DatabaseFile;
 import pl.pollubmy.server.entity.FileInformation;
 import pl.pollubmy.server.entity.User;
+import pl.pollubmy.server.entity.dto.FileInformationDTO;
+import pl.pollubmy.server.entity.dto.FileInformationDTOConverter;
 import pl.pollubmy.server.exceptions.FileStorageException;
 import pl.pollubmy.server.exceptions.UserNotFoundException;
 import pl.pollubmy.server.repository.DatabaseFileRepository;
@@ -14,6 +16,8 @@ import pl.pollubmy.server.repository.StoredFileRepository;
 import pl.pollubmy.server.repository.UserRepository;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -85,7 +89,7 @@ public class DatabaseFileStorageService {
     }
 
     private void checkIfFileBelongToUser(User user, FileInformation fileInformation) {
-        if(!(fileInformation.getUserIdFk().getUserId().equals(user.getUserId()))){
+        if (!(fileInformation.getUserIdFk().getUserId().equals(user.getUserId()))) {
             throw new FileStorageException("This file doesn't belong to this user");
         }
     }
@@ -100,4 +104,25 @@ public class DatabaseFileStorageService {
         return storedFile.get();
     }
 
+    public List<FileInformationDTO> getFilesInformation(String userLogin) {
+        User user = checkIfUserExist(userLogin);
+
+        List<FileInformation> fileInformationList = this.storedFileRepository.findAll();
+        checkIfFilesExistInDB(fileInformationList);
+
+        List<FileInformationDTO> fileInformationDTOList = new ArrayList<>();
+
+        for (FileInformation fileInformation : fileInformationList) {
+            FileInformationDTO fileInformationDTO = FileInformationDTOConverter.toDto(fileInformation, user);
+            fileInformationDTOList.add(fileInformationDTO);
+        }
+
+        return fileInformationDTOList;
+    }
+
+    private void checkIfFilesExistInDB(List<FileInformation> fileInformationList) {
+        if (fileInformationList.isEmpty()) {
+            throw new FileStorageException("No files in database");
+        }
+    }
 }

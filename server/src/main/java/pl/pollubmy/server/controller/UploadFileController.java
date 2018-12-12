@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.security.Principal;
 
 @RestController
+@RequestMapping("/uploadFile")
 public class UploadFileController {
 
     private final DatabaseFileStorageService databaseFileStorageService;
@@ -23,7 +24,7 @@ public class UploadFileController {
         this.databaseFileStorageService = databaseFileStorageService;
     }
 
-    @PostMapping("/uploadFile")
+    @PostMapping
     public ResponseEntity<?> uploadFile(
             final Principal userLogged,
             @RequestParam("file") MultipartFile file,
@@ -36,10 +37,16 @@ public class UploadFileController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/uploadFile/{fileInformationId}")
+    @DeleteMapping("/{fileInformationId}")
     public ResponseEntity<?> deleteUploadFile(final Principal userLogged, @PathVariable final String fileInformationId) {
         String userLogin = UserLogged.getLogin(userLogged);
         this.databaseFileStorageService.deleteFile(userLogin, fileInformationId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllInformationAboutFilesStoredInDataBase(final Principal userLogged) {
+        String userLogin = UserLogged.getLogin(userLogged);
+        return new ResponseEntity<>(this.databaseFileStorageService.getFilesInformation(userLogin), HttpStatus.OK);
     }
 }
