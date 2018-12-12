@@ -74,7 +74,7 @@ public class ForumPostService {
         return updatePost;
     }
 
-    public void ratePost(String userLogin, String ratingPostId, String rate) {
+    public String ratePost(String userLogin, String ratingPostId, String rate) {
         ForumPost postRating = checkIfPostExist(ratingPostId);
         User userWhichRate = checkIfUserExist(userLogin);
         if (!checkIfUserRatedOnThisPost(userWhichRate, postRating, rate)) {
@@ -84,6 +84,15 @@ public class ForumPostService {
             this.forumPostRatingRepository.save(forumPostRating);
         }
         doRate(postRating, rate);
+        return getVoteSign(userWhichRate, postRating);
+    }
+
+    private String getVoteSign(User userWhichRate, ForumPost postRating) {
+        Optional<ForumPostRating> forumPostRating = this.forumPostRatingRepository.findByForumPostIdFkAndUserIdFk(postRating, userWhichRate);
+        if (forumPostRating.isPresent()) {
+            return forumPostRating.get().getSign();
+        }
+        return "";
     }
 
     private void doRate(ForumPost postRating, String rate) {

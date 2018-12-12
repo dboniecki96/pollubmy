@@ -62,7 +62,7 @@ public class ForumPostController {
             @PathVariable final String ratingPostId,
             @RequestParam(value = "rate", required = true) final String rate) {
         String userLogin = UserLogged.getLogin(userLogged);
-        this.forumPostService.ratePost(userLogin, ratingPostId, rate);
-        return new ResponseEntity<>(HttpStatus.OK);
+        String sign = this.forumPostService.ratePost(userLogin, ratingPostId, rate);
+        return new ResponseEntity<>(sign, HttpStatus.OK);
     }
 }

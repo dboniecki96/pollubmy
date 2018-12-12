@@ -95,7 +95,7 @@ public class CommentPostService {
     }
 
 
-    public void rateComment(String userLogin, String ratingCommentId, String rate) {
+    public String rateComment(String userLogin, String ratingCommentId, String rate) {
         Comment commentToRating = checkIfCommentExist(ratingCommentId);
         User userWhichRate = checkIfUserExist(userLogin);
         if (!checkIfUserRatedOnThisComment(userWhichRate, commentToRating, rate)) {
@@ -106,6 +106,15 @@ public class CommentPostService {
             this.commentRatingRepository.save(commentPostRating);
         }
         doRate(commentToRating, rate);
+        return getVoteSign(userWhichRate, commentToRating);
+    }
+
+    private String getVoteSign(User userWhichRate, Comment commentToRating) {
+        Optional<CommentRating> comment = this.commentRatingRepository.findByCommentIdFkAndUserIdFk(commentToRating, userWhichRate);
+        if (comment.isPresent()) {
+            return comment.get().getSign();
+        }
+        return "";
     }
 
     private boolean checkIfUserRatedOnThisComment(User userWhichRate, Comment commentToRating, String rate) {
