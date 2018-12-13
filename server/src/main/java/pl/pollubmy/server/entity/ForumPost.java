@@ -47,6 +47,8 @@ public class ForumPost {
 
     private String title;
 
+    private String rating = "no";
+
     public String getForumPostId() {
         return forumPostId;
     }
@@ -127,5 +129,13 @@ public class ForumPost {
 
     public void setForumPostRatings(List<ForumPostRating> forumPostRatings) {
         this.forumPostRatings = forumPostRatings;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

@@ -14,7 +14,7 @@ public class CommentRating {
     @Column(columnDefinition = "CHAR(32)")
     private String commentRatingId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userIdFk")
     private User userIdFk;
 

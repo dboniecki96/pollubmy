@@ -20,6 +20,7 @@ public class ForumPostDTOConverter {
         forumPostDTO.setAddPostTime(forumPost.getAddPostTime());
         forumPostDTO.setPostText(forumPost.getPostText());
         forumPostDTO.setTitle(forumPost.getTitle());
+        forumPostDTO.setRate(forumPost.getRating());
 
         List<Comment> commentList = forumPost.getComments();
 

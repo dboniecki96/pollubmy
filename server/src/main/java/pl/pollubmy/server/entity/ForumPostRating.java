@@ -14,7 +14,7 @@ public class ForumPostRating {
     @Column(columnDefinition = "CHAR(32)")
     private String postRatingId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userIdFk")
     private User userIdFk;
 

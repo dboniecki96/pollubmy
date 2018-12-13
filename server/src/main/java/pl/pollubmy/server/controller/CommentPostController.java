@@ -53,7 +53,7 @@ public class CommentPostController {
             @PathVariable final String ratingCommentId,
             @RequestParam(value = "rate", required = true) final String rate) {
         String userLogin = UserLogged.getLogin(userLogged);
-        String sign = this.commentPostService.rateComment(userLogin, ratingCommentId, rate);
-        return new ResponseEntity<>(sign, HttpStatus.OK);
+        this.commentPostService.rateComment(userLogin, ratingCommentId, rate);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
