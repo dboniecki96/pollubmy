@@ -15,6 +15,7 @@ public class FileInformationDTOConverter {
         fileInformationDTO.setFieldOfStudy(fileInformation.getFieldOfStudy());
         fileInformationDTO.setFileInformationId(fileInformation.getFileInformationId());
         fileInformationDTO.setDescription(fileInformation.getDescription());
+        fileInformationDTO.setUploadFileDate(fileInformation.getUploadFileDate());
 
         fileInformationDTO.setFileName(fileInformation.getDatabaseFileIdFk().getFileName());
 

@@ -2,8 +2,10 @@ package pl.pollubmy.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class FileInformation {
@@ -30,6 +32,9 @@ public class FileInformation {
     private String course;
 
     private String description;
+
+    @DateTimeFormat
+    private LocalDateTime uploadFileDate = LocalDateTime.now();
 
     public FileInformation() {
     }
@@ -88,5 +93,13 @@ public class FileInformation {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDateTime getUploadFileDate() {
+        return uploadFileDate;
+    }
+
+    public void setUploadFileDate(LocalDateTime uploadFileDate) {
+        this.uploadFileDate = uploadFileDate;
     }
 }
