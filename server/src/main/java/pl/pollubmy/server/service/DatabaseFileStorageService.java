@@ -56,6 +56,7 @@ public class DatabaseFileStorageService {
         this.storedFileRepository.save(fileInformationBody);
     }
 
+
     private String checkIfFileNameIsEmpty(MultipartFile file) {
         if (file.getOriginalFilename() == null) {
             throw new FileStorageException("Empty name of file");
@@ -69,7 +70,7 @@ public class DatabaseFileStorageService {
         return this.databaseFileRepository.save(dbFile);
     }
 
-    private void ifFileContainsInvalidCharacter(String fileName) throws IOException {
+    private void ifFileContainsInvalidCharacter(String fileName) {
         if (fileName.contains("..")) {
             throw new FileStorageException("Invalid characters in filename");
         }
@@ -123,6 +124,30 @@ public class DatabaseFileStorageService {
     private void checkIfFilesExistInDB(List<FileInformation> fileInformationList) {
         if (fileInformationList.isEmpty()) {
             throw new FileStorageException("No files in database");
+        }
+    }
+
+    public List<FileInformationDTO> getAllMyFiles(String userLogin) {
+        User user = checkIfUserExist(userLogin);
+        List<FileInformation> userFiles = user.getFilesInformation();
+        checkIfUserHasFiles(userFiles);
+        return convertFileInformationToDTO(userFiles, user);
+    }
+
+    private List<FileInformationDTO> convertFileInformationToDTO(List<FileInformation> userFiles, User user) {
+        List<FileInformationDTO> fileInformationDTOList = new ArrayList<>();
+
+        for (FileInformation fileInformation : userFiles) {
+            FileInformationDTO file = FileInformationDTOConverter.toDto(fileInformation, user);
+            fileInformationDTOList.add(file);
+        }
+
+        return fileInformationDTOList;
+    }
+
+    private void checkIfUserHasFiles(List<FileInformation> filesInformation) {
+        if (filesInformation.isEmpty()) {
+            throw new FileStorageException("User doesn't have uploaded files");
         }
     }
 }

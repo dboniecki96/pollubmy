@@ -49,4 +49,10 @@ public class UploadFileController {
         String userLogin = UserLogged.getLogin(userLogged);
         return new ResponseEntity<>(this.databaseFileStorageService.getFilesInformation(userLogin), HttpStatus.OK);
     }
+
+    @GetMapping("/my")
+    public ResponseEntity<?> getAllInformationAboutUserFiles(final Principal userLogged) {
+        String userLogin = UserLogged.getLogin(userLogged);
+        return new ResponseEntity<>(this.databaseFileStorageService.getAllMyFiles(userLogin), HttpStatus.OK);
+    }
 }
