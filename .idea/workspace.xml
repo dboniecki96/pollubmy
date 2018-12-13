@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeb61033-ae82-4604-8919-3da968614c5e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/DownloadFileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DownloadFileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UploadFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UploadFileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DatabaseFileStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DatabaseFileStorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/StoredFileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/FileInformationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DatabaseFileStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UploadFileService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/server/target/" />
@@ -27,19 +29,21 @@
       <file leaf-file-name="UploadFileController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UploadFileController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+            <state relative-caret-position="204">
+              <caret line="33" column="93" lean-forward="true" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#787#788#0" expanded="true" />
+                <element signature="e#845#846#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseFileStorageService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DatabaseFileStorageService.java">
+      <file leaf-file-name="UploadFileService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UploadFileService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
+            <state relative-caret-position="1208">
               <caret line="84" column="16" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -51,26 +55,44 @@
       <file leaf-file-name="FileInformation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/FileInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="-119">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateLessonController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/PrivateLessonController.java">
+      <file leaf-file-name="FileInformationRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/FileInformationRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="68">
+              <caret line="5" column="65" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentPostController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/CommentPostController.java">
+      <file leaf-file-name="CommentPostService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/CommentPostService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+            <state relative-caret-position="258">
+              <caret line="104" column="90" selection-start-line="104" selection-start-column="90" selection-end-line="104" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ForumPostService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/ForumPostService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="969">
+              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DownloadFileController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/DownloadFileController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,42 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java">
+      <file leaf-file-name="DownloadFileService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DownloadFileService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-              <folding>
-                <element signature="e#5334#5335#0" expanded="true" />
-                <element signature="e#5373#5374#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommentRating.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/CommentRating.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/Comment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ForumPostController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/ForumPostController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+            <state relative-caret-position="223">
+              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,11 +112,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForumPostDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/ForumPostDTO.java">
+      <file leaf-file-name="FileInformationDTO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/FileInformationDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="34">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -143,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pr</find>
       <find>stream</find>
       <find>isAct</find>
       <find>userDTO</find>
@@ -160,8 +159,6 @@
       <find>int rate</find>
       <find>fin</find>
       <find>userRepos</find>
-      <find>add</find>
-      <find>rate</find>
       <find>Forum Post</find>
       <find>commentNotFound</find>
       <find>exception</find>
@@ -173,6 +170,9 @@
       <find>anyRe</find>
       <find>fkId</find>
       <find>commentRat</find>
+      <find>add</find>
+      <find>rate</find>
+      <find>lombok</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -186,12 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UserService.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserAddress.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserDetails.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/UserRole.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/UserDTO.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/PrivateLessonDTOConverter.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/PrivateLessonService.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/ForumPostRepository.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/ForumPostNotFoundException.java" />
@@ -228,15 +222,21 @@
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/StoredFile.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/DatabaseFile.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/FileInformation.java" />
-        <option value="$PROJECT_DIR$/server/pom.xml" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/FileInformationDTO.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/FileInformationDTOConverter.java" />
         <option value="$PROJECT_DIR$/server/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UploadFileController.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/TooLargeFileException.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/RestHandlerException.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DatabaseFileStorageService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/DownloadController.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DownloadService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UploadFileService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/DownloadFileController.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/FileInformationRepository.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DownloadFileService.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/FileInformationDTO.java" />
+        <option value="$PROJECT_DIR$/server/pom.xml" />
       </list>
     </option>
   </component>
@@ -283,8 +283,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -356,8 +354,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
+              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
@@ -367,7 +364,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pollubmy" type="b2602c69:ProjectViewProjectNode" />
@@ -400,6 +397,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -623,6 +622,7 @@
       <workItem from="1544637580094" duration="4099000" />
       <workItem from="1544698759756" duration="3978000" />
       <workItem from="1544703535283" duration="8507000" />
+      <workItem from="1544722635482" duration="3454000" />
     </task>
     <task id="LOCAL-00001" summary="Register_01 05.10.2018&#10;Simple register - not tested, not valid">
       <created>1538693751587</created>
@@ -845,10 +845,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="544471000" />
+    <option name="totallyTimeSpent" value="547925000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -868,8 +868,8 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49926794" weight="0.32838285" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49853587" visible="true" weight="0.3349835" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49926794" weight="0.32838285" />
       <window_info id="npm" order="2" sideWeight="0.5036855" side_tool="true" weight="0.2927383" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49853587" weight="0.32838285" />
@@ -881,8 +881,8 @@
       <window_info id="Favorites" order="2" sideWeight="0.5037221" side_tool="true" weight="0.2927383" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TypeScript" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TypeScript" order="8" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
@@ -965,20 +965,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/ForumPostRatingRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/ForumPost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/ForumPostRating.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -1133,13 +1119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/StoredFileRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/FileStorageException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1153,34 +1132,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/DatabaseFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/CommentPostService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="144" column="1" lean-forward="true" selection-start-line="144" selection-start-column="1" selection-end-line="144" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/FileInformationDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1229,21 +1184,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/TooLargeFileException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#194#195#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#330#331#0" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/exceptions/TooLargeFileException.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE.jar!/org/springframework/http/HttpStatus.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1268">
@@ -1265,23 +1206,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/ForumPostService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="136" column="24" lean-forward="true" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/ForumPostDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        <state relative-caret-position="340">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/ForumPostController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="578">
           <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1291,7 +1225,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/CommentPostController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
+        <state relative-caret-position="782">
           <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1301,26 +1235,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="731">
           <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-          <folding>
-            <element signature="e#5334#5335#0" expanded="true" />
-            <element signature="e#5373#5374#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/Comment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
+        <state relative-caret-position="85">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/CommentRating.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="255">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1331,19 +1261,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UploadFileController.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/CommentPostService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="42" column="45" lean-forward="true" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+        <state relative-caret-position="258">
+          <caret line="104" column="90" selection-start-line="104" selection-start-column="90" selection-end-line="104" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/ForumPostService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/DownloadFileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DatabaseFileStorageService.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/repository/FileInformationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="68">
+          <caret line="5" column="65" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/DownloadFileService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/dto/FileInformationDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/service/UploadFileService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1208">
           <caret line="84" column="16" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1351,10 +1326,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/controller/UploadFileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="33" column="93" lean-forward="true" selection-start-line="33" selection-start-column="93" selection-end-line="33" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/pl/pollubmy/server/entity/FileInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="-119">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>

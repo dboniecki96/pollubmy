@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.pollubmy.server.entity.FileInformation;
 import pl.pollubmy.server.entity.UserLogged;
-import pl.pollubmy.server.service.DatabaseFileStorageService;
+import pl.pollubmy.server.service.UploadFileService;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -17,11 +17,11 @@ import java.security.Principal;
 @RequestMapping("/uploadFile")
 public class UploadFileController {
 
-    private final DatabaseFileStorageService databaseFileStorageService;
+    private final UploadFileService uploadFileService;
 
     @Autowired
-    public UploadFileController(DatabaseFileStorageService databaseFileStorageService) {
-        this.databaseFileStorageService = databaseFileStorageService;
+    public UploadFileController(UploadFileService uploadFileService) {
+        this.uploadFileService = uploadFileService;
     }
 
     @PostMapping
@@ -33,26 +33,26 @@ public class UploadFileController {
         String userLogin = UserLogged.getLogin(userLogged);
         FileInformation fileInformation = new ObjectMapper().readValue(storedFileBody, FileInformation.class);
 
-        this.databaseFileStorageService.storeFile(file, userLogin, fileInformation);
+        this.uploadFileService.storeFile(file, userLogin, fileInformation);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{fileInformationId}")
     public ResponseEntity<?> deleteUploadFile(final Principal userLogged, @PathVariable final String fileInformationId) {
         String userLogin = UserLogged.getLogin(userLogged);
-        this.databaseFileStorageService.deleteFile(userLogin, fileInformationId);
+        this.uploadFileService.deleteFile(userLogin, fileInformationId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllInformationAboutFilesStoredInDataBase(final Principal userLogged) {
         String userLogin = UserLogged.getLogin(userLogged);
-        return new ResponseEntity<>(this.databaseFileStorageService.getFilesInformation(userLogin), HttpStatus.OK);
+        return new ResponseEntity<>(this.uploadFileService.getFilesInformation(userLogin), HttpStatus.OK);
     }
 
     @GetMapping("/my")
     public ResponseEntity<?> getAllInformationAboutUserFiles(final Principal userLogged) {
         String userLogin = UserLogged.getLogin(userLogged);
-        return new ResponseEntity<>(this.databaseFileStorageService.getAllMyFiles(userLogin), HttpStatus.OK);
+        return new ResponseEntity<>(this.uploadFileService.getAllMyFiles(userLogin), HttpStatus.OK);
     }
 }

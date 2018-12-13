@@ -12,7 +12,7 @@ import pl.pollubmy.server.entity.dto.FileInformationDTOConverter;
 import pl.pollubmy.server.exceptions.FileStorageException;
 import pl.pollubmy.server.exceptions.UserNotFoundException;
 import pl.pollubmy.server.repository.DatabaseFileRepository;
-import pl.pollubmy.server.repository.StoredFileRepository;
+import pl.pollubmy.server.repository.FileInformationRepository;
 import pl.pollubmy.server.repository.UserRepository;
 
 import java.io.IOException;
@@ -21,17 +21,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DatabaseFileStorageService {
+public class UploadFileService {
 
     private final DatabaseFileRepository databaseFileRepository;
-    private final StoredFileRepository storedFileRepository;
+    private final FileInformationRepository fileInformationRepository;
     private final UserRepository userRepository;
 
 
     @Autowired
-    public DatabaseFileStorageService(DatabaseFileRepository databaseFileRepository, StoredFileRepository storedFileRepository, UserRepository userRepository) {
+    public UploadFileService(DatabaseFileRepository databaseFileRepository, FileInformationRepository fileInformationRepository, UserRepository userRepository) {
         this.databaseFileRepository = databaseFileRepository;
-        this.storedFileRepository = storedFileRepository;
+        this.fileInformationRepository = fileInformationRepository;
         this.userRepository = userRepository;
     }
 
@@ -53,7 +53,7 @@ public class DatabaseFileStorageService {
         fileInformationBody.getDatabaseFileIdFk().setFileInformation(fileInformationBody);
         fileInformationBody.setUserIdFk(user);
         fileInformationBody.getUserIdFk().getFilesInformation().add(fileInformationBody);
-        this.storedFileRepository.save(fileInformationBody);
+        this.fileInformationRepository.save(fileInformationBody);
     }
 
 
@@ -86,7 +86,7 @@ public class DatabaseFileStorageService {
         User user = checkIfUserExist(userLogin);
         FileInformation fileInformation = checkIfStoredFileExist(fileInformationId);
         checkIfFileBelongToUser(user, fileInformation);
-        this.storedFileRepository.delete(fileInformation);
+        this.fileInformationRepository.delete(fileInformation);
     }
 
     private void checkIfFileBelongToUser(User user, FileInformation fileInformation) {
@@ -96,7 +96,7 @@ public class DatabaseFileStorageService {
     }
 
     private FileInformation checkIfStoredFileExist(String fileInformationId) {
-        Optional<FileInformation> storedFile = this.storedFileRepository.findById(fileInformationId);
+        Optional<FileInformation> storedFile = this.fileInformationRepository.findById(fileInformationId);
 
         if (!storedFile.isPresent()) {
             throw new FileStorageException("File not found");
@@ -108,7 +108,7 @@ public class DatabaseFileStorageService {
     public List<FileInformationDTO> getFilesInformation(String userLogin) {
         User user = checkIfUserExist(userLogin);
 
-        List<FileInformation> fileInformationList = this.storedFileRepository.findAll();
+        List<FileInformation> fileInformationList = this.fileInformationRepository.findAll();
         checkIfFilesExistInDB(fileInformationList);
 
         List<FileInformationDTO> fileInformationDTOList = new ArrayList<>();
