@@ -46,13 +46,13 @@ public class User {
     @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToOne(mappedBy = "userIdFk")
+    @OneToMany(mappedBy = "userIdFk")
     @JsonIgnore
-    private ForumPostRating forumPostRating;
+    private List<ForumPostRating> forumPostRatings = new ArrayList<>();
 
-    @OneToOne(mappedBy = "userIdFk")
+    @OneToMany(mappedBy = "userIdFk")
     @JsonIgnore
-    private CommentRating commentRating;
+    private List<CommentRating> commentRatings = new ArrayList<>();
 
     @NotNull
     @NotEmpty
@@ -196,20 +196,20 @@ public class User {
         this.comments = comments;
     }
 
-    public ForumPostRating getForumPostRating() {
-        return forumPostRating;
+    public List<ForumPostRating> getForumPostRatings() {
+        return forumPostRatings;
     }
 
-    public void setForumPostRating(ForumPostRating forumPostRating) {
-        this.forumPostRating = forumPostRating;
+    public void setForumPostRatings(List<ForumPostRating> forumPostRatings) {
+        this.forumPostRatings = forumPostRatings;
     }
 
-    public CommentRating getCommentRating() {
-        return commentRating;
+    public List<CommentRating> getCommentRatings() {
+        return commentRatings;
     }
 
-    public void setCommentRating(CommentRating commentRating) {
-        this.commentRating = commentRating;
+    public void setCommentRatings(List<CommentRating> commentRatings) {
+        this.commentRatings = commentRatings;
     }
 
     @Override

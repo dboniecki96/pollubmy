@@ -40,6 +40,9 @@ public class Comment {
     private Integer points = 0;
 
     @JsonIgnore
+    private String rating = "no";
+
+    @JsonIgnore
     private boolean isActive = true;
 
     public String getCommentId() {
@@ -74,7 +77,6 @@ public class Comment {
         this.points = points;
     }
 
-
     public ForumPost getForumPostIdFk() {
         return forumPostIdFk;
     }
@@ -105,5 +107,13 @@ public class Comment {
 
     public void setCommentRatings(List<CommentRating> commentRatings) {
         this.commentRatings = commentRatings;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

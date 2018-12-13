@@ -95,26 +95,18 @@ public class CommentPostService {
     }
 
 
-    public String rateComment(String userLogin, String ratingCommentId, String rate) {
+    public void rateComment(String userLogin, String ratingCommentId, String rate) {
         Comment commentToRating = checkIfCommentExist(ratingCommentId);
         User userWhichRate = checkIfUserExist(userLogin);
+
         if (!checkIfUserRatedOnThisComment(userWhichRate, commentToRating, rate)) {
             CommentRating commentPostRating = new CommentRating(userWhichRate, commentToRating, rate);
-            commentPostRating.getUserIdFk().setCommentRating(commentPostRating);
+            commentPostRating.getUserIdFk().getCommentRatings().add(commentPostRating);
             commentPostRating.getCommentIdFk().getCommentRatings().add(commentPostRating);
             commentPostRating.getCommentIdFk().getCommentRatings().add(commentPostRating);
             this.commentRatingRepository.save(commentPostRating);
         }
         doRate(commentToRating, rate);
-        return getVoteSign(userWhichRate, commentToRating);
-    }
-
-    private String getVoteSign(User userWhichRate, Comment commentToRating) {
-        Optional<CommentRating> comment = this.commentRatingRepository.findByCommentIdFkAndUserIdFk(commentToRating, userWhichRate);
-        if (comment.isPresent()) {
-            return comment.get().getSign();
-        }
-        return "";
     }
 
     private boolean checkIfUserRatedOnThisComment(User userWhichRate, Comment commentToRating, String rate) {
@@ -124,9 +116,11 @@ public class CommentPostService {
                 throw new WrongRatingException("User voted on this comment");
             } else {
                 this.commentRatingRepository.delete(comment.get());
+                commentToRating.setRating("no");
                 return true;
             }
         }
+        commentToRating.setRating(rate);
         return false;
     }
 

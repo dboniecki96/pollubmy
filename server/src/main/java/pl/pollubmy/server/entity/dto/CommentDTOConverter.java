@@ -14,6 +14,7 @@ public class CommentDTOConverter {
         commentDTO.setPoints(comment.getPoints());
         commentDTO.setPostTime(comment.getPostTime());
         commentDTO.setText(comment.getText());
+        commentDTO.setRate(comment.getRating());
         return commentDTO;
     }
 }

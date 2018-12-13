@@ -16,6 +16,8 @@ public class CommentDTO {
 
     private boolean owner = true;
 
+    private String rate;
+
     public String getCommentId() {
         return commentId;
     }
@@ -62,5 +64,13 @@ public class CommentDTO {
 
     public void setOwner(boolean owner) {
         this.owner = owner;
+    }
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
     }
 }

@@ -2,6 +2,7 @@ package pl.pollubmy.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.pollubmy.server.entity.Comment;
 import pl.pollubmy.server.entity.ForumPost;
 import pl.pollubmy.server.entity.ForumPostRating;
 import pl.pollubmy.server.entity.User;
@@ -57,6 +58,13 @@ public class ForumPostService {
         ForumPost postToDeactivate = checkIfPostExist(deactivatePostId);
         checkIfItUserPost(user, postToDeactivate);
         postToDeactivate.setActive(false);
+
+        List<Comment> commentsBelongsToPost = postToDeactivate.getComments();
+
+        for (Comment commentToDelete : commentsBelongsToPost) {
+            commentToDelete.setActive(false);
+        }
+
         this.forumPostRepository.save(postToDeactivate);
     }
 
@@ -74,25 +82,16 @@ public class ForumPostService {
         return updatePost;
     }
 
-    public String ratePost(String userLogin, String ratingPostId, String rate) {
+    public void ratePost(String userLogin, String ratingPostId, String rate) {
         ForumPost postRating = checkIfPostExist(ratingPostId);
         User userWhichRate = checkIfUserExist(userLogin);
         if (!checkIfUserRatedOnThisPost(userWhichRate, postRating, rate)) {
             ForumPostRating forumPostRating = new ForumPostRating(userWhichRate, postRating, rate);
-            forumPostRating.getUserIdFk().setForumPostRating(forumPostRating);
+            forumPostRating.getUserIdFk().getForumPostRatings().add(forumPostRating);
             forumPostRating.getForumPostIdFk().getForumPostRatings().add(forumPostRating);
             this.forumPostRatingRepository.save(forumPostRating);
         }
         doRate(postRating, rate);
-        return getVoteSign(userWhichRate, postRating);
-    }
-
-    private String getVoteSign(User userWhichRate, ForumPost postRating) {
-        Optional<ForumPostRating> forumPostRating = this.forumPostRatingRepository.findByForumPostIdFkAndUserIdFk(postRating, userWhichRate);
-        if (forumPostRating.isPresent()) {
-            return forumPostRating.get().getSign();
-        }
-        return "";
     }
 
     private void doRate(ForumPost postRating, String rate) {
@@ -108,9 +107,11 @@ public class ForumPostService {
                 throw new WrongRatingException("User voted on this post");
             } else {
                 this.forumPostRatingRepository.delete(forumPostRating.get());
+                postRating.setRating("no");
                 return true;
             }
         }
+        postRating.setRating(rate);
         return false;
     }
 
