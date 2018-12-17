@@ -22,7 +22,7 @@ public class PrivateLessonOffer {
 
     @JsonManagedReference
     @OneToOne
-    @JoinColumn(name = "privateLessonId")
+    @JoinColumn(name = "privateLessonIdFk")
     private PrivateLesson privateLessonIdFK;
 
     private boolean isActive = true;

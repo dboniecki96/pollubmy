@@ -58,6 +58,10 @@ public class User {
     @JsonIgnore
     private List<FileInformation> filesInformation = new ArrayList<>();
 
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<HelpInStudyOffer> helpInStudyOffers = new ArrayList<>();
+
     @NotNull
     @NotEmpty
     private String firstName;
@@ -221,6 +225,14 @@ public class User {
 
     public void setFilesInformation(List<FileInformation> filesInformation) {
         this.filesInformation = filesInformation;
+    }
+
+    public List<HelpInStudyOffer> getHelpInStudyOffers() {
+        return helpInStudyOffers;
+    }
+
+    public void setHelpInStudyOffers(List<HelpInStudyOffer> helpInStudyOffers) {
+        this.helpInStudyOffers = helpInStudyOffers;
     }
 
     @Override
