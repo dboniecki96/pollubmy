@@ -63,20 +63,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(entryPoint)
+            .csrf().disable()
+            .exceptionHandling().authenticationEntryPoint(entryPoint)
                 .and()
-                .authorizeRequests()
+            .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/register", "/login").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/student/**").access("hasRole('ROLE_USER')")
+                .anyRequest().authenticated()
                 .and()
-                .addFilter(new JwtAuthenticationFilter((authenticationManager())))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager()))
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .addFilter(new JwtAuthenticationFilter((authenticationManager())))
+            .addFilter(new JwtAuthorizationFilter(authenticationManager(), customUserDetailsService))
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         http.cors();
     }
-
-
 }

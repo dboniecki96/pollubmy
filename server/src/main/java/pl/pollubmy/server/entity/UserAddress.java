@@ -1,16 +1,13 @@
 package pl.pollubmy.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 import pl.pollubmy.server.enumType.CountryType;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class UserAddress {
-
-    //Fields
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -18,34 +15,22 @@ public class UserAddress {
     @Column(columnDefinition = "CHAR(32)")
     private String userAddressId;
 
-    @NotNull
-    @NotEmpty
+    @OneToOne
+    @JsonBackReference
+    @JoinColumn(name = "userIdFk")
+    private User userIdFK;
+
     private CountryType Country;
 
-    @NotNull
-    @NotEmpty
     private String city;
 
-    @NotNull
-    @NotEmpty
     private String street;
 
-    @NotNull
-    @NotEmpty
     private String houseNumber;
 
     private String apartmentNumber;
 
-    @NotNull
-    @NotEmpty
     private String postalCode;
-
-    @OneToOne
-    @JoinColumn(name = "userIdFk")
-    private User userIdFK;
-
-
-    // Getters and setters
 
     public String getUserAddressId() {
         return userAddressId;
@@ -53,6 +38,14 @@ public class UserAddress {
 
     public void setUserAddressId(String userAddressId) {
         this.userAddressId = userAddressId;
+    }
+
+    public User getUserIdFK() {
+        return userIdFK;
+    }
+
+    public void setUserIdFK(User userIdFK) {
+        this.userIdFK = userIdFK;
     }
 
     public CountryType getCountry() {
@@ -101,13 +94,5 @@ public class UserAddress {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
-    }
-
-    public User getUserIdFK() {
-        return userIdFK;
-    }
-
-    public void setUserIdFK(User userIdFK) {
-        this.userIdFK = userIdFK;
     }
 }

@@ -1,0 +1,75 @@
+<study>
+    <faculty name="Wydział Elektrotechniki i Informatyki Politechniki Lubelskiej">
+        <fieldOfStudy name="Informatyka">
+            <course>Język angielski</course>
+            <course>Ochrona własności intelektualnej</course>
+            <course>Podstawy fizyki</course>
+            <course>Funkcje elementarne</course>
+            <course>Matematyka dyskretna</course>
+            <course>Analiza matematyczna z algebrą</course>
+            <course>Metody probabilistyczne i statystyka</course>
+            <course>Teoretyczne podstawy informatyki</course>
+            <course>Podstawy programowania</course>
+            <course>Architektura komputerów</course>
+            <course>Algorytmy i struktury danych</course>
+            <course>Systemy operacyjne</course>
+            <course>Programowanie niskopoziomowe</course>
+            <course>Programowanie obiektowe</course>
+            <course>Metody numeryczne</course>
+            <course>Teoria obwodów i sygnałów</course>
+            <course>Metrologia</course>
+            <course>Elektronika</course>
+            <course>Technika cyfrowa</course>
+            <course>Programowanie systemowe</course>
+            <course>Język Java</course>
+            <course>Sieci komputerowe</course>
+            <course>Narzędzia internetowe</course>
+            <course>Grafika komputerowa</course>
+            <course>Bazy danych</course>
+            <course>Sieci rozproszone</course>
+            <course>Technika mikroprocesorowa</course>
+            <course>Inżynieria oprogramowania</course>
+            <course>Bezpieczeństwo systemów informatycznych</course>
+            <course>Tworzenie aplikacji internetowych</course>
+            <course>Modelowanie i symulacja komputerowa</course>
+            <course>Systemy wbudowane</course>
+            <course>Programowanie równoległe i rozproszone</course>
+            <course>Paradygmaty programowania</course>
+            <course>Programowanie aplikacji mobilnych</course>
+            <course>Programowanie w chmurze obliczeniowej</course>
+            <course>Projektowanie interfejsów i ergonomia systemów</course>
+        </fieldOfStudy>
+        <fieldOfStudy name="Elektrotechnika">
+            <course>Język angielski</course>
+            <course>Ochrona własności intelektualnej</course>
+            <course>Techniki informacyjne </course>
+            <course>Geometria i grafika inżynierska</course>
+            <course>Moduł HES</course>
+            <course>Wstęp do matematyki</course>
+            <course>Fizyka</course>
+            <course>Informatyka</course>
+            <course>Elektrochemia</course>
+            <course>Matematyka</course>
+            <course>Inżynieria materiałowa</course>
+            <course>Teoria obwodów</course>
+            <course>Moduł HES 2</course>
+            <course>Metody numeryczne</course>
+            <course>Bezpieczeństwo użytkowania urządzeń elektrycznych</course>
+            <course>Metrologia</course>
+            <course>Teoria pola elektro-magnetycznego</course>
+            <course>Maszyny elektryczne</course>
+            <course>Automatyka i regulacja automatyczna</course>
+            <course>Elektroenergetyka</course>
+            <course>Elektronika i energoelektronika</course>
+            <course>Technika wysokich napięć</course>
+            <course>Sieci elektroenergetyczne</course>
+            <course>Instalacje i oświetlenie</course>
+            <course>Urządzenia elektryczne</course>
+            <course>Napęd elektryczny</course>
+            <course>Ukadady elektropneumatycznej automatyzacji przemysłowej</course>
+            <course>Wprowadzenie do telekomunikacji</course>
+            <course>Technika mikroprocesorowa</course>
+            <course>Układy elektroniczne</course>
+        </fieldOfStudy>
+    </faculty>
+</study>

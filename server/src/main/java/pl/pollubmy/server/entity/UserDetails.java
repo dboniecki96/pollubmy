@@ -1,16 +1,13 @@
 package pl.pollubmy.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class UserDetails {
-
-    //Fields
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -19,11 +16,11 @@ public class UserDetails {
     private String userDetailsId;
 
     @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "userIdFk")
     private User userIdFK;
 
-    @OneToMany(mappedBy = "userDetailsIdFK")
-    private List<Hobby> hobbies;
+    //private List<HobbyEnum> hobbies;
 
     private String secondName;
 
@@ -31,24 +28,23 @@ public class UserDetails {
 
     private String specialization;
 
-    private int year;
+    @Column(nullable = true)
+    private Integer year;
 
-    private int term;
+    @Column(nullable = true)
+    private Integer term;
+
+    private String academicDegree;
 
     private String albumNumber;
 
     private LocalDate startDate;
 
-    private LocalDate finshDate;
-
-    private String PESEL;
-
-    private String academicDegree;
+    private LocalDate finishDate;
 
     private LocalDate dateOfBirth;
 
-
-    // Getters and setters
+    private String phone;
 
     public String getUserDetailsId() {
         return userDetailsId;
@@ -90,20 +86,28 @@ public class UserDetails {
         this.specialization = specialization;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public int getTerm() {
+    public Integer getTerm() {
         return term;
     }
 
-    public void setTerm(int term) {
+    public void setTerm(Integer term) {
         this.term = term;
+    }
+
+    public String getAcademicDegree() {
+        return academicDegree;
+    }
+
+    public void setAcademicDegree(String academicDegree) {
+        this.academicDegree = academicDegree;
     }
 
     public String getAlbumNumber() {
@@ -122,36 +126,12 @@ public class UserDetails {
         this.startDate = startDate;
     }
 
-    public LocalDate getFinshDate() {
-        return finshDate;
+    public LocalDate getFinishDate() {
+        return finishDate;
     }
 
-    public void setFinshDate(LocalDate finshDate) {
-        this.finshDate = finshDate;
-    }
-
-    public String getPESEL() {
-        return PESEL;
-    }
-
-    public void setPESEL(String PESEL) {
-        this.PESEL = PESEL;
-    }
-
-    public String getAcademicDegree() {
-        return academicDegree;
-    }
-
-    public void setAcademicDegree(String academicDegree) {
-        this.academicDegree = academicDegree;
-    }
-
-    public List<Hobby> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<Hobby> hobbies) {
-        this.hobbies = hobbies;
+    public void setFinishDate(LocalDate finishDate) {
+        this.finishDate = finishDate;
     }
 
     public LocalDate getDateOfBirth() {
@@ -160,5 +140,21 @@ public class UserDetails {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    /*    public List<HobbyEnum> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<HobbyEnum> hobbies) {
+        this.hobbies = hobbies;
+    }*/
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

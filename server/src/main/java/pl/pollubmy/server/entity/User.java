@@ -1,6 +1,8 @@
 package pl.pollubmy.server.entity;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -8,12 +10,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class User {
-
-    //Fields
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -25,11 +26,41 @@ public class User {
     @OneToMany(mappedBy = "userIdFK", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<UserRole> userRole;
 
-    @OneToOne(mappedBy = "userIdFK")
-    private UserAddress userAddress;
+    @JsonManagedReference
+    @OneToOne(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    private UserAddress userAddress = new UserAddress();
 
-    @OneToOne(mappedBy = "userIdFK")
-    private UserDetails userDetails;
+    @JsonManagedReference
+    @OneToOne(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    private UserDetails userDetails = new UserDetails();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userIdFK", cascade = CascadeType.ALL)
+    private List<PrivateLessonOffer> privateLessonOffers = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    private List<ForumPost> forumPosts = new ArrayList<>();
+
+    @JsonManagedReference(value = "user-comment")
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userIdFk")
+    @JsonIgnore
+    private List<ForumPostRating> forumPostRatings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userIdFk")
+    @JsonIgnore
+    private List<CommentRating> commentRatings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<FileInformation> filesInformation = new ArrayList<>();
+
+    @OneToMany(mappedBy = "userIdFk", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<HelpInStudyOffer> helpInStudyOffers = new ArrayList<>();
 
     @NotNull
     @NotEmpty
@@ -57,12 +88,11 @@ public class User {
 
     private boolean isActive = true;
 
-    // Constructor
 
     public User() {
+        this.getUserDetails().setUserIdFK(this);
+        this.getUserAddress().setUserIdFK(this);
     }
-
-    // Getters and setters
 
     public String getUserId() {
         return userId;
@@ -146,6 +176,65 @@ public class User {
         isActive = active;
     }
 
+    @JsonIgnore
+    public List<PrivateLessonOffer> getPrivateLessonOffers() {
+        return privateLessonOffers;
+    }
+
+    public void setPrivateLessonOffers(List<PrivateLessonOffer> privateLessonOffers) {
+        this.privateLessonOffers = privateLessonOffers;
+    }
+
+    @JsonIgnore
+    public List<ForumPost> getForumPosts() {
+        return forumPosts;
+    }
+
+    public void setForumPosts(List<ForumPost> forumPosts) {
+        this.forumPosts = forumPosts;
+    }
+
+    @JsonIgnore
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<ForumPostRating> getForumPostRatings() {
+        return forumPostRatings;
+    }
+
+    public void setForumPostRatings(List<ForumPostRating> forumPostRatings) {
+        this.forumPostRatings = forumPostRatings;
+    }
+
+    public List<CommentRating> getCommentRatings() {
+        return commentRatings;
+    }
+
+    public void setCommentRatings(List<CommentRating> commentRatings) {
+        this.commentRatings = commentRatings;
+    }
+
+    public List<FileInformation> getFilesInformation() {
+        return filesInformation;
+    }
+
+    public void setFilesInformation(List<FileInformation> filesInformation) {
+        this.filesInformation = filesInformation;
+    }
+
+    public List<HelpInStudyOffer> getHelpInStudyOffers() {
+        return helpInStudyOffers;
+    }
+
+    public void setHelpInStudyOffers(List<HelpInStudyOffer> helpInStudyOffers) {
+        this.helpInStudyOffers = helpInStudyOffers;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -153,6 +242,9 @@ public class User {
                 ", userRole=" + userRole +
                 ", userAddress=" + userAddress +
                 ", userDetails=" + userDetails +
+                ", privateLessonOffers=" + privateLessonOffers +
+                ", forumPosts=" + forumPosts +
+                ", comments=" + comments +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", login='" + login + '\'' +

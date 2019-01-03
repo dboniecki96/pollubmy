@@ -18,10 +18,12 @@ import static pl.pollubmy.server.security.SecurityParameters.*;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, CustomUserDetailsService customUserDetailsService) {
         super(authenticationManager);
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     @Override
@@ -43,13 +45,12 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String token = request.getHeader(HEADER);
 
         if (token != null) {
-            String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
+            String username = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
                     .build()
                     .verify(token.replace(PREFIX, ""))
                     .getSubject();
-
-            if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null);
+            if (username != null) {
+                return new UsernamePasswordAuthenticationToken(username, null, null);
             }
             return null;
         }

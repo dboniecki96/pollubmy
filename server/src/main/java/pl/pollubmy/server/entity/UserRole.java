@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Entity
 public class UserRole {
 
-    //Fields
-
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -25,21 +23,17 @@ public class UserRole {
     @Enumerated(EnumType.STRING)
     private RoleType roleName;
 
-    public UserRole(RoleType roleName) {
-        this.roleName = roleName;
+    public UserRole() {
     }
 
-    //Constructor
-
-    public UserRole() {
+    public UserRole(RoleType roleName) {
+        this.roleName = roleName;
     }
 
     public UserRole(User userIdFK, RoleType roleName) {
         this.userIdFK = userIdFK;
         this.roleName = roleName;
     }
-
-    // Getters and setters
 
     public String getUserRoleId() {
         return userRoleId;
@@ -64,5 +58,4 @@ public class UserRole {
     public void setRoleName(RoleType roleName) {
         this.roleName = roleName;
     }
-
 }
