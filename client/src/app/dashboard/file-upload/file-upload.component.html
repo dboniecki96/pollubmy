@@ -1,0 +1,153 @@
+<ng-template #template>
+  <div class="modal-content">
+    <form #upload="ngForm" (ngSubmit)="onUpload(upload)">
+      <div class="modal-header">
+        <h4 class="modal-title">Udostępnij plik</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide(); upload.reset()"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div ngModelGroup="storedFileBody">
+          <div class="form-group">
+            <label for="faculty">Wydział</label>
+            <select class="form-control" name="faculty" id="faculty" (change)="onSelectFaculty($event)" required
+              ngModel #faculty="ngModel" [(ngModel)]="selectedFaculty">
+              <option *ngFor="let fac of faculties" [ngValue]="fac.faculty">{{fac.faculty}}</option>
+            </select>
+            <p class="alert alert-danger" *ngIf="!faculty.valid && faculty.touched">Wybierz wydział</p>
+          </div>
+          <div class="form-group">
+            <label for="fieldOfStudy">Kierunek</label>
+            <select [disabled]="!faculty.valid" class="form-control" name="fieldOfStudy" id="fieldOfStudy" (change)="onSelectField($event)"
+              required ngModel #fieldOfStudy="ngModel" [(ngModel)]="selectedField">
+              <option *ngFor="let f of fields" [ngValue]="f.fieldOfStudy">{{f.fieldOfStudy}}</option>
+            </select>
+            <p class="alert alert-danger" *ngIf="!fieldOfStudy.valid && fieldOfStudy.touched">Wybierz kierunek</p>
+          </div>
+          <div class="form-group">
+            <label for="course">Przedmiot</label>
+            <select [disabled]="!fieldOfStudy.valid" class="form-control" name="course" id="course" required ngModel
+              #course="ngModel" [(ngModel)]="selectedCourse">
+              <option *ngFor="let c of courses;" [ngValue]="c">{{c}}</option>
+            </select>
+            <p class="alert alert-danger" *ngIf="!course.valid && course.touched">Wybierz przedmiot</p>
+          </div>
+          <div class="form-group">
+            <label for="description">Opis</label>
+            <textarea [disabled]="!course.valid" class="form-control" name="description" id="description" cols="30"
+              rows="4" required ngModel #description="ngModel"></textarea>
+            <p class="alert alert-danger" *ngIf="!description.valid && description.touched">Wprowadź opis przesyłanego
+              materiału</p>
+          </div>
+        </div>
+        <div class="file">
+          <div class="form-group">
+            <input [disabled]="!description.valid" name="file" type="file" class="form-control" required ngModel #file="ngModel"
+              (change)="onFileSelected($event)" accept=
+              "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+              text/plain, application/pdf, image/*, .7z, .zip, .rar">
+          </div>
+          <p class="alert alert-danger" *ngIf="!file.valid && file.touched">Wybierz plik do przesłania</p>
+          <p class="alert alert-danger" *ngIf="fileSize > 200000000">Plik nie może być większy niż 200 MB!</p>
+        </div>
+
+
+        <div *ngIf="progress === 100 && fileUploaded" class="progress" style="height:5px; margin: 5px;">
+          <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress + '%'}" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p class="alert alert-success" *ngIf="progress === 100 && fileUploaded">Przesyłanie zakończone! Możesz zamknąć
+          okno</p>
+        <div *ngIf="progress === 100 && !fileUploaded" class="progress" style="height:5px; margin: 5px;">
+          <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{width: progress + '%'}" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p class="alert alert-danger" *ngIf="progress === 100 && !fileUploaded">Nie udało sie przesłać pliku!</p>
+
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="fileUploaded || !(faculty.valid && fieldOfStudy.valid && course.valid && description.valid && file.valid && (fileSize <= 200000000))"
+          type="submit" class="btn btn-primary">Udostępnij</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="jumbotron bg-dark">
+                <p class="text-white">Tutaj znajdziesz wszystkie materiały dydaktyczne opublikowane przez użytkowników.
+                  Pliki wyszukiwane są za pomocą wskazania WYDZIAŁU, KIERUNKU do niego należącego oraz PRZEDMIOTU na danym kierunku.
+                  Po kliknięciu przycisku <strong>Udostępnij plik</strong> możesz przesłać źródło pomocy dla danego przedmiotu.
+                  <br><strong>Dopuszczalne rozszerzenia plików</strong>: .doc, .docx, .7z, .rar, .zip, .pptx, .xlsx
+                </p>
+              </div>
+        </div>
+      </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="block">
+          <button type="button" class="btn btn-default btn-lg" (click)="openModal(template)">Udostępnij plik</button>
+      </div>
+      <div class="backdrop" [ngStyle]="{'display':displayBackdrop}"></div>
+      <div class="row justify-content-center">
+        <h3>Wyszukaj materiał</h3>
+      </div>
+      <p class="alert alert-danger" *ngIf="noFilesErrorStatus === 400">Brak opublikowanych materiałów</p>
+      <div class="filterFiles" *ngIf="noFilesErrorStatus !== 400">
+        <label for="selectFaculty">Wydział</label>
+        <select class="form-control" name="selectFaculty" id="selectFaculty" (change)="onSelectFaculty()" required
+          ngModel [(ngModel)]="selectedFaculty" #selectFaculty="ngModel">
+          <option *ngFor="let fac of faculties" [ngValue]="fac.faculty">{{fac.faculty}}</option>
+        </select>
+        <p class="alert alert-danger" *ngIf="!selectFaculty.valid && selectFaculty.touched">Wybierz wydział</p>
+        <label for="selectFieldOfStudy">Kierunek</label>
+        <select [disabled]="!selectFaculty.valid" class="form-control" name="selectFieldOfStudy" id="selectFieldOfStudy"
+          (change)="onSelectField()" required ngModel [(ngModel)]="selectedField" #selectFieldOfStudy="ngModel">
+          <option *ngFor="let f of fields" [ngValue]="f.fieldOfStudy">{{f.fieldOfStudy}}</option>
+        </select>
+        <p class="alert alert-danger" *ngIf="!selectFieldOfStudy.valid && selectFieldOfStudy.touched">Wybierz kierunek</p>
+        <label for="selectCourse">Przedmiot</label>
+        <select [disabled]="!selectFieldOfStudy.valid" class="form-control" name="selectCourse" id="selectCourse"
+          required ngModel [(ngModel)]="selectedCourse" #selectCourse="ngModel">
+          <option *ngFor="let c of courses;" [ngValue]="c">{{c}}</option>
+        </select>
+        <p class="alert alert-danger" *ngIf="!selectCourse.valid && selectCourse.touched">Wybierz przedmiot</p>
+        <div class="displayFiles" *ngIf="selectFaculty.valid && selectFieldOfStudy.valid && selectCourse.valid">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h4>Kierunek: <span class="fieldOfStudy">{{selectFieldOfStudy.value}}</span></h4>
+            </li>
+            <li class="list-group-item">
+              <h4>Przedmiot: <span class="course">{{selectCourse.value}}</span></h4>
+            </li>
+          </ul>
+          <p class="alert alert-danger" *ngIf="!isThereFile()">Brak materiałów związanych z tym przedmiotem</p>
+          <ul class="list-group" *ngFor="let file of files">
+            <li class="list-group-item" *ngIf="file.faculty === selectFaculty.value 
+                                                && file.fieldOfStudy === selectFieldOfStudy.value
+                                                && file.course === selectCourse.value">
+              <div class="row">
+                <div class="col">
+                  <h5>Opublikowano {{file.uploadFileDate | date: 'd/M/yyyy, HH:mm'}}</h5>
+                  <h4>Opis: {{file.description}}</h4>
+                  <h5>Nazwa pliku: {{file.fileName}}</h5>
+                  <hr>
+                  <button class="btn btn-primary float-right" (click)="downloadFile(file.fileInformationId, file.fileName)">Pobierz
+                    plik</button>
+                  <button class="btn btn-danger float-right" *ngIf="file.owner" (click)="deleteFile(file.fileInformationId)">Usuń
+                    plik</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

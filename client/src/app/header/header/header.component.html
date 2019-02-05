@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
   <div class="container-fluid">
-    <a href="#" class="navbar-brand">
-    <h1 class="title">Pollubmy</h1>
-    </a>
+    <img src="../../../assets/logo-white.png" alt="logo" style="cursor: pointer;" routerLink="/start">
     <button class="navbar-toggler" type="button" data-toggle="collapse"
       data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false">
       <span class="navbar-toggler-icon"></span>
@@ -18,8 +16,17 @@
            </li>
       </ng-template> 
         <li class="nav-item" >
-          <a role="button" class="userLogin" routerLink="/dashboard/details" *ngIf="loginService.isLoggedIn()">Witaj, userLogin!</a>
+          <a role="button" class="userLogin" routerLink="/dashboard/details" *ngIf="loginService.isLoggedIn()">Witaj, <b>{{user?.firstName}}</b>!</a>
         </li>   
+        <li class="nav-item" >
+          <a role="button" class="resources" routerLink="/dashboard/resources" *ngIf="loginService.isLoggedIn()">Materiały dydaktyczne</a>
+        </li> 
+        <li class="nav-item" >
+          <a role="button" class="lessons" routerLink="/dashboard/privatelessons" *ngIf="loginService.isLoggedIn()">Korepetycje</a>
+        </li> 
+        <li class="nav-item" >
+          <a role="button" class="userLogin" routerLink="/dashboard/posts" *ngIf="loginService.isLoggedIn()">Posty</a>
+        </li>
         <li class="nav-item" >
           <a role="button" class="logoutButton" (click)="loginService.logoutUser()" *ngIf="loginService.isLoggedIn()">Wyloguj się</a>
         </li>  

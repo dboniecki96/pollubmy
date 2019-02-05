@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="list-group">
+        <a role="button" class="list-group-item">
+          <div class="row">
+            <div class="col postSection">
+              <h2 class="text-center">Edytuj post</h2>
+              <hr>
+              <div class="row">
+                <div class="col-sm">
+                  <h4 class="category">Kategoria: {{selectedPost?.category}}</h4>
+                </div>
+                <div class="col-sm">
+                  <p class="date text-right">Opublikowano w dniu {{selectedPost?.addPostTime | date: 'M/d/yyyy, HH:mm'}}</p>
+                </div>
+              </div>
+              <hr>
+              <form #edit="ngForm" (ngSubmit)="editPost(edit)">
+                <h5><label for="title">Edytuj tytuł</label></h5>
+                <input type="text" class="form-control" name="title" id="title" required [(ngModel)]="title"
+                  #titleModel="ngModel">
+                <p class="alert alert-danger" *ngIf="!titleModel.valid">Wprowadź tytuł</p>
+                <hr>
+                <h5><label for="text">Edytuj tekst</label></h5>
+                <textarea name="text" id="text" class="form-control" cols="30" rows="4" required [(ngModel)]="text"
+                  #textModel="ngModel"></textarea>
+                <p class="alert alert-danger" *ngIf="!textModel.valid">Post musi zawierać tekst!</p>
+                <div class="row justify-content-center">
+                  <button [disabled]="!(titleModel.valid && textModel.valid)" class="btn btn-primary">Edytuj Post</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <button class="btn btn-default" (click)="return()">Powrót do postów</button>
+  </div>
+</div>

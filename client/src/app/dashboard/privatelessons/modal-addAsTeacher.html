@@ -1,0 +1,67 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Informacje podstawowe</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSubmit(privatelessonsAdd)" #privatelessonsAdd="ngForm">
+      <div class="form-group">
+        <label for="faculty">Wydział</label>
+        <div class="form-group">
+          <select name="faculty" id="faculty" (change)="onSelectFaculty($event)" required ngModel class="form-control"
+            #faculty="ngModel">
+            <option *ngFor="let fac of faculties" [ngValue]="fac.faculty">{{fac.faculty}}</option>
+          </select>
+          <p class="alert alert-danger" *ngIf="!faculty.valid && faculty.touched">Wybierz wydział</p>
+        </div>
+        <div class="form-group">
+          <label for="fieldOfStudy">Kierunek</label>
+          <br>
+          <select [disabled]="!faculty.valid" class="form-control" name="fieldOfStudy" id="fieldOfStudy" (change)="onSelectField($event)"
+            required ngModel #fieldOfStudy="ngModel">
+            <option *ngFor="let f of fields" [ngValue]="f.fieldOfStudy">{{f.fieldOfStudy}}</option>
+          </select>
+          <p class="alert alert-danger" *ngIf="!fieldOfStudy.valid && fieldOfStudy.touched">Wybierz kierunek</p>
+          <div class="form-group">
+            <label for="course">Przedmiot</label>
+            <br>
+            <select [disabled]="!fieldOfStudy.valid" class="form-control" name="course" id="course" (change)="onSelectCourse($event)"
+              required ngModel #course="ngModel">
+              <option *ngFor="let c of courses" [ngValue]="c">{{c}}</option>
+            </select>
+            <p class="alert alert-danger" *ngIf="!course.valid && course.touched">Wybierz przedmiot</p>
+          </div>
+          <div class="form-group">
+            <br>
+            <label for="price">Cena</label>
+            <input type="number" class="form-control" name="price" id="price" required ngModel class="form-control"
+              #price="ngModel">
+            <p class="alert alert-danger" *ngIf="!price.valid && price.touched">Wprowadź cenę za 60 minut korepetycji</p>
+          </div>
+          <div class="form-group">
+            <br>
+            <label for="time">Czas</label>
+            <input type="number" class="form-control" name="time" id="time" required ngModel class="form-control" #time="ngModel">
+            <p class="alert alert-danger" *ngIf="!time.valid && time.touched">Wprowadz czas korepetycji w minutach</p>
+          </div>
+          <div class="form-group">
+            <br>
+            <label for="description">Opis</label>
+            <input type="textarea" name="description" id="description" required ngModel class="form-control" rows="10"
+              cols="70" #description="ngModel">
+            <p class="alert alert-danger" *ngIf="!description.valid && description.touched">Opis jest polem wymaganym</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="privatelessonAdd" class="btn btn-danger" 
+        [disabled]="!(faculty.valid && fieldOfStudy.valid && course.valid && price.valid && description.valid)">
+          Dodaj ogłoszenie</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<button class="btn btn-lg btn-sm" (click)="open(content)">Udzielę korepetycji</button>
+<hr>

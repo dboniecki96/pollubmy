@@ -1,7 +1,113 @@
-    <ul class="list-group">
+<div class="row justify-content-center">
+    <div class="jumbotron bg-dark">
+        <p class="text-white">W zakładce <strong>Dane o profilu</strong> możesz podglądać, edytować swoje dane lub zmienić hasło</p>
+    </div>
+</div>
+<form  (ngSubmit)="onEditDetails(put)" #put="ngForm">
+    <p class="alert alert-success" *ngIf="put.submitted">Zaktualizowano dane</p>
+    <h2 class="text-center">Dane o profilu</h2>
+    <h4>Informacje główne</h4>
+    <ul class="list-group" *ngFor="let detail of user">
        <li class="list-group-item">
-           <h3>Login</h3>
-           <p>userLogin</p>
+           <h5>Login</h5>
+           <input class="form-control" type="text" name="login" [(ngModel)]="detail.login">
+        </li>
+       <li class="list-group-item">
+         <h5>Adres e-mail</h5>
+        <input class="form-control" type="text" name="emailPollub"
+        pattern='^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(pollub.edu)\.pl$'
+        [(ngModel)]="detail.emailPollub" #emailPollub="ngModel">
        </li>
-   </ul>
- 
+       <p class=" alert alert-danger" *ngIf="!emailPollub.valid">
+        Wprowadź poprawny adres e-mail z domeną pollub.edu.pl. 
+      </p>
+        <li class="list-group-item">
+            <h5>Imię</h5>
+        <input class="form-control" type="text" name="firstName" [(ngModel)]="detail.firstName">
+      </li>
+       <li class="list-group-item">
+            <h5>Nazwisko</h5>
+        <input class="form-control" type="text" name="lastName" [(ngModel)]="detail.lastName">
+       </li>
+       
+    </ul>
+    <h4>Informacje szczegółowe</h4>
+    <div ngModelGroup="userDetails">
+        <ul class="list-group" *ngFor="let userdetail of filterUserDetails()">
+            <li class="list-group-item">
+                <h5>Drugie imię</h5>
+                <input class="form-control" type="text" name="secondName" [(ngModel)]="userdetail.secondName">
+            </li>
+            <li class="list-group-item">
+                <h5>Telefon (format - 123456789)</h5>
+                <input class="form-control" type="tel" name="phone" #phone="ngModel" [(ngModel)]="userdetail.phone" pattern="[0-9]{9}">
+                <p class="alert alert-danger" *ngIf="!phone.valid">Wprowadź poprawny numer telefonu</p>
+            </li>
+            <li class="list-group-item">
+                <h5>Kierunek</h5>
+                <input class="form-control" type="text" name="specialization" [(ngModel)]="userdetail.specialization">
+            </li>
+            <li class="list-group-item">
+                <h5>Rok</h5>
+                <input class="form-control" type="number" name="year" [(ngModel)]="userdetail.year">
+            </li>
+            <li class="list-group-item">
+                <h5>Semestr</h5>
+                <input class="form-control" type="number" name="term" [(ngModel)]="userdetail.term">
+            </li>
+            <li class="list-group-item">
+                <h5>Stopień naukowy</h5>
+                <input class="form-control" type="text" name="academicDegree" [(ngModel)]="userdetail.academicDegree">
+            </li>
+            <li class="list-group-item">
+                <h5>Numer albumu</h5>
+                <input class="form-control" type="number" name="albumNumber" ngModel [(ngModel)]="userdetail.albumNumber">
+            </li>
+            <li class="list-group-item">
+                <h5>Data urodzenia</h5>
+                <input class="form-control" type="text" name="dateOfBirth" [(ngModel)]="userdetail.dateOfBirth">
+            </li>
+            <li class="list-group-item">
+                <h5>Data rozpoczęcia studiów</h5>
+                <input class="form-control" type="text" name="startDate" [(ngModel)]="userdetail.startDate">
+            </li>
+            <li class="list-group-item">
+                <h5>Data ukończenia studiów</h5>
+                <input class="form-control" type="text" name="finishDate" [(ngModel)]="userdetail.finishDate">
+            </li>
+        </ul>
+    </div>
+    <div ngModelGroup="userAddress">
+        <ul class="list-group" *ngFor="let useraddress of filterUserAddress()">
+            <li class="list-group-item">
+                <h5>Miasto</h5>
+                <input class="form-control" type="text" name="city" [(ngModel)]="useraddress.city">
+            </li>
+            <li class="list-group-item">
+                <h5>Ulica</h5>
+                <input class="form-control" type="text" name="street" [(ngModel)]="useraddress.street">
+            </li>
+            <li class="list-group-item">
+                <h5>Numer lokalu</h5>
+                <input class="form-control" type="text" name="houseNumber" [(ngModel)]="useraddress.houseNumber">
+            </li>
+            <li class="list-group-item">
+                <h5>Numer mieszkania</h5>
+                <input class="form-control" type="text" name="apartmentNumber" [(ngModel)]="useraddress.apartmentNumber">
+            </li>
+            <li class="list-group-item">
+                <h5>Kod pocztowy</h5>
+                <input class="form-control" type="text" name="postalCode" pattern="[0-9]{2}\-[0-9]{3}" [(ngModel)]="useraddress.postalCode">
+            </li>
+            <li class="list-group-item">
+                <h5>Państwo</h5>
+                <input class="form-control" type="text" name="country" [(ngModel)]="useraddress.country">
+            </li>
+        </ul>
+    </div> 
+    <div class="col-lg-12 text-center">
+        <button class="btn btn-primary" type="submit">Zaktualizuj profil</button>
+        <button class="btn btn-info" type="button" routerLink="/dashboard/changePassword">Zmień hasło</button>
+        <button class="btn btn-default" type="button" routerLink="/dashboard" >Powrót</button>
+    </div>
+</form>

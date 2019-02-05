@@ -1,0 +1,45 @@
+
+<div class="container">
+<div class="col-lg-8">
+  <div class="jumbotron bg-dark">
+      <p class="text-white">Tutaj znajdziesz wszystkie KOREPETYCJE opublikowane przez użytkowników naszej społeczności.
+        Zachęcamy do <strong>dodawania</strong> ogłoszeń i dzielenia się swoją wiedzą z resztą społeczności. Jeżeli potrzebujesz pomocy z jakimś zagadnieniem to ta platforma jest stworzona właśnie dla <strong>Ciebie</strong> 
+      </p>
+    </div>
+</div>
+<div class="col-sm-12">
+  <div class="article-img-1 pull-left"></div>
+  <div class="article-text d-md-block pull-right">
+    <h5>Jak czytać ogłoszenia?</h5>
+    <p>Zasada korzystania z korepetycji jest banalnie prosta:</p>
+        <p>Kolorem zielonym oznaczone zostały ogłoszenia opublikowane przez korepetytorów zaś 
+      ogłoszenia oznaczone kolorem czerwonym zostały opublikowane przez studentów potrzebujących pomocy w nauce</p>
+      <p>Jeżeli czujesz się na siłach aby udzielić korepetycji kliknij <ngbd-modal-addAsTeacher></ngbd-modal-addAsTeacher> </p>
+      <p>Jeżeli potrzebujesz pomocy w nauce i szukasz korepetytora kliknij <ngbd-modal-addAsStudent></ngbd-modal-addAsStudent></p>
+
+    
+  </div>
+</div>
+<body>
+<div class="card" style="width: 45rem;">
+  <h2 class="text-center privatelessons">Ogłoszenia</h2>
+  <div class="list-group" *ngFor="let announcement of announcements">
+  <div class="card-header"
+  [ngClass]=" {
+    'positive' : announcement.price !== 0 && announcement.time !== 0,
+    'negative' : announcement.price === 0 
+   }">
+    {{announcement.faculty}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Kierunek: {{announcement.fieldOfStudy}}</li>
+    <li class="list-group-item">Przedmiot: {{announcement.course}}</li>
+    <li class="list-group-item">Opis: {{announcement.description}}</li>
+    <li class="list-group-item" *ngIf="announcement.price !== 0">Cena: {{announcement.price}}</li>
+    <li class="list-group-item" *ngIf="announcement.price !== 0">Czas trwania: {{announcement.time}}</li>
+  </ul>
+</div>
+</div>
+
+</body>
+</div>

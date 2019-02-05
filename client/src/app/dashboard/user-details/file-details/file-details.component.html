@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+        <div class="jumbotron bg-dark">
+            <p class="text-white">W tej zakładce możesz podglądać, usunąć lub pobrać materiały udostępnione przez Ciebie</p>
+        </div>
+    </div>
+<div class="list-group">
+  <li class="list-group-item">
+      <h3>Opublikowane materiały</h3>
+      <p class="alert alert-danger" *ngIf="errorStatus === 400">{{errorMessage}}</p>
+      <div class="list-group-item" *ngFor="let file of files">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6>Wydział {{file.faculty}}</h6>
+                    <h5>{{file.fieldOfStudy}}</h5>
+                    
+                </div>
+                <div class="col-sm-6">
+                    <h4>{{file.course}}</h4>
+                    <h6>{{file.uploadFileDate | date: 'd/M/yyyy, HH:mm'}}</h6>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col">
+                    <h5>Opis: {{file.description}}</h5>
+                    <hr>
+                    <h5>Nazwa pliku: {{file.fileName}}</h5>
+                </div>         
+              </div>
+              <div class="row justify-content-center">
+                <button class="btn btn-primary" (click)="downloadFile(file.fileInformationId)" >Pobierz plik</button>
+                <button class="btn btn-danger" (click)="deleteFile(file.fileInformationId)" >Usuń plik</button>
+              </div>
+      </div>
+  </li>
+</div>

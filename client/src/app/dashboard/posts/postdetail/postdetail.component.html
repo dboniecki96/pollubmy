@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="list-group">
+        <a role="button" class="list-group-item post-detail bg-light">
+          <div class="row">
+            <div class="col-sm-1 pointSection bg-light">
+              <button class="btn btn-light" [ngStyle]="{color: addPointStyle}" [disabled]="pointSubtracted" (click)="addPostPoint()">
+                <h2>+</h2>
+              </button>
+              <button class="btn btn-light">
+                <h2>{{points}}</h2>
+              </button>
+              <button class="btn btn-light" [ngStyle]="{color: subtractPointStyle}" [disabled]="pointAdded" (click)="subtractPostPoint()">
+                <h2>-</h2>
+              </button>
+            </div>
+            <div class="col-sm-11 postSection">
+              <div class="row">
+                <div class="col-sm">
+                  <h3 class="category">{{selectedPost?.category}}</h3>
+                </div>
+                <div class="col-sm">
+                  <p class="date text-right">Upublikowano przez <strong>{{selectedPost?.userLogin}}</strong> w dniu
+                    {{selectedPost?.addPostTime | date:'d/M/yy - H:mm'}}</p>
+                </div>
+              </div>
+              <h2 class="title">{{selectedPost?.title}}</h2>
+              <h5 class="text">{{selectedPost?.postText}}</h5>
+              <hr>
+              <button type="button" class="btn btn-info">
+                <span class="badge badge-light">{{commentsLength}}</span> Komentarzy
+              </button>
+              <hr>
+              <h4>Skomentuj</h4>
+              <div class="textarea">
+                <form #comment="ngForm" (ngSubmit)="addComment(comment)">
+                  <textarea name="text" #text="ngModel" required ngModel placeholder="Co masz na myśli..." id="" cols="30"
+                    rows="5" class="form-control"></textarea>
+                  <button class="btn btn-dark float-right" [disabled]="!text.valid">Skomentuj</button>
+                </form>
+              </div>
+              <div class="sortComment">
+                <h5>Sortuj komentarze wg:
+                  <select class="form-control" (change)="selectedSort($event)" name="filterComments" id="filterComments">
+                    <option value="popular">Najbardziej popularne</option>
+                    <option value="new">Najnowsze</option>
+                    <option value="old">Najstarsze</option>
+                  </select>
+                </h5>
+              </div>
+              <div class="commentSection" *ngFor="let comment of comments">
+                <div class="list-group">
+                  <div class="list-group-item">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <button class="btn btn-light" [ngStyle]="{color: commentAddPointStyle}" [disabled]="commentPointSubtracted"
+                          (click)="addCommentPoint(comment.commentId)">
+                          <h5>+</h5>
+                        </button>
+                        <button class="btn btn-light">
+                          <h5>{{comment.points}}</h5>
+                        </button>
+                        <button class="btn btn-light" [ngStyle]="{color: commentSubtractPointStyle}" [disabled]="commentPointAdded"
+                          (click)="subtractCommentPoint(comment.commentId)">
+                          <h5>-</h5>
+                        </button>
+                      </div>
+                      <div class="col-7">
+                        <p class="text-left"> Użytkownik <strong>{{comment.userLogin}}</strong> - {{comment.postTime |
+                          date: 'M/d/yyyy, HH:mm'}}</p>
+                        <div class="editComment" *ngIf="editable && comment.commentId.toString() === selectedCommentId">
+                          <div class="col-sm-9">
+                            <textarea [(ngModel)]="comment.text" name="text" id="text" cols="50" rows="2" required ngModel #edit="ngModel"></textarea>
+                            <p class="alert alert-danger" *ngIf="!edit.valid">Komentarz nie może być pusty!</p>
+                          </div>
+                          <div class="col-sm-1">
+                            <button [disabled]="!edit.valid" class="btn btn-success" (click)="editComment(comment.text)">Zatwierdź</button>
+                          </div>
+                          <div class="col-sm-1">
+                              <button class="btn btn-default" (click)="cancelEdit()">Anuluj</button>
+                          </div>
+                        </div>
+                        <h5 *ngIf="!(editable && comment.commentId.toString() === selectedCommentId)">{{comment.text}}</h5>
+                      </div>
+                      <div class="col-2">
+                        <button [hidden]="comment.owner !== true && editable" (click)="allowEdit(comment.commentId)" class="btn btn-default float-right">Edytuj</button>
+                        <button [hidden]="comment.owner !== true && editable" (click)="deleteComment(comment.commentId)" class="btn btn-danger float-right">X</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <button class="btn btn-dark btn-lg m-4" routerLink="../">Powrót do postów</button>
+  </div>
+</div>

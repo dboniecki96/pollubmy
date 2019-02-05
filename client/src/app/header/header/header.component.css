@@ -1,10 +1,11 @@
 .logoutButton{
     cursor: pointer;
+    color: grey;
 }
 img{
-    width:25px;
-    height:25px;
-    margin-bottom:6px;
+    width:70px;
+    height:70px;
+    margin: 5px 5px 6px 90px;
 }
 .navbar-brand{
     font-size: 30px;
@@ -17,7 +18,18 @@ img{
    padding: 10px;
 }
 nav .navbar-nav li a{
-    color: rgb(207, 203, 141);
+    color: white;
+    font-weight: bold;
+    text-transform:uppercase;
+    text-decoration-style: none;
+}
+nav .navbar-nav li a:hover{
+    color: black;
+    background-color: white;
+}
+nav{
+    background-color: #141414;
+
 }
 .logoutButton{
     font-weight: bold;

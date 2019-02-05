@@ -1,0 +1,60 @@
+<div *ngIf="route.children.length === 0">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+          <div class="jumbotron bg-dark">
+              <p class="text-white">Tutaj znajdziesz wszystkie POSTY opublikowane przez użytkowników naszej społeczności.
+                Możesz takie <strong>dodać</strong> nowy post oraz sprawdzić swoje publikacje po kliknięciu przycisku <strong>Zobacz swoje posty</strong>
+              </p>
+            </div>
+      </div>
+    </div>
+    <h2 class="text-center post-title">Posty</h2>
+    <div class="row justify-content-center management">
+      <div class="col-lg-3 text-center">
+        <select (change)="selectedSort($event)" class="form-control" name="sort" id="sort">
+          <option value="popular">Najbardziej popularne</option>
+          <option value="old">Najstarsze</option>
+          <option value="new">Najnowsze</option>
+        </select>
+      </div>
+      <div class="col-lg-3 text-center">
+        <button class="btn btn-success" routerLink="../addpost">Dodaj post</button>
+      </div>
+      <div class="col-lg-3 text-right">
+          <button class="btn btn-default" routerLink="../details">Zobacz swoje posty</button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <p class="alert alert-danger" *ngIf="errorStatus === 400">Nie znaleziono postów</p>
+            <div class="list-group m-3" *ngFor="let post of posts">
+              <a routerLink="./{{post.forumPostId}}" role="button" class="list-group-item list-group-item-action post">
+                <div class="row">
+                  <div class="col-sm-1 pointsection">
+                    <h3>{{post.points}}</h3>
+                  </div>
+                  <div class="col-sm-11">
+                    <div class="row">
+                      <div class="col-sm">
+                        <p class="category">{{post.category}}</p>
+                      </div>
+                      <div class="col-sm">
+                        <p class="date text-right">Upublikowano przez <strong>{{post.userLogin}}</strong> w dniu {{post.addPostTime |
+                          date: 'M/d/yyyy, HH:mm'}}</p>
+                      </div>
+                    </div>
+                    <h2 class="title">{{post.title}}</h2>
+                    <h4 class="text">{{post.postText}}</h4>
+                    <button type="button" class="btn btn-info float-right">
+                      <span class="badge badge-light">{{post.commentsDTO.length}}</span> Komentarzy
+                    </button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

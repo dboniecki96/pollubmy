@@ -1,0 +1,45 @@
+.container {
+    margin-top: 5%;
+    margin-right: 200px;
+}
+.title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.positive {
+    background-color: green;
+}
+.negative {
+    background-color: red;
+}
+.card-img-top {
+    background-image: url(../../img/legenda.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 105px;
+}
+.card {
+    float: left; width: 50%; margin: 10px;
+    border-color: #3e4444;
+    
+}
+.column_layout {
+    float: right; width: 30%; margin: 0 10%;
+}
+
+.article-text {
+    width: 60%;
+    height: 30vh;
+    
+}
+
+.article-text h5 {
+    margin-bottom: 1.5r;
+    color: #001a7a;
+}
+
+.article-text p {
+    color: #3f3f3f;
+    margin: 0%;
+}

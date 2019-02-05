@@ -1,3 +1,5 @@
+import { PrivatelessonsService } from './../../privatelessons/privatelessons.service';
+import { Privatelessons } from './../../privatelessons/privatelessons.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonsDetailsComponent implements OnInit {
 
-  constructor() { }
+  noLessonsErrorStatus: number;
+  announcements: Privatelessons[] = [
+  ];
+  constructor(private privateLessonService: PrivatelessonsService) { }
 
   ngOnInit() {
+    this.privateLessonService.getMyannouncements().subscribe(
+      res=>{
+        this.announcements = res;
+        console.log(res);
+      },
+      err=>{
+        this.noLessonsErrorStatus = err.status;
+        console.log(this.noLessonsErrorStatus);
+      }
+    );
   }
 
 }

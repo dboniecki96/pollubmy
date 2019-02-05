@@ -1,23 +1,59 @@
-
+<body>
   <div class="container">
     <div class="row justify-content-center">
-        <form>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <form class="form-horizontal" (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <h2>Utwórz konto</h2>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <label class="control-label" for="firstName">Imie:</label>
+              <input maxlength="50" type="text" class="form-control" name="firstName" id="firstName" required ngModel>
             </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="form-group">
+              <label class="control-label" for="lastName">Nazwisko:</label>
+              <input maxlength="50" type="text" class="form-control" name="lastName" id="lastName" required ngModel>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <div class="form group">
+              <label class="control-label" for="emailPollub">E-mail:</label>
+              <input maxlength="50" type="e-mail" class="form-control" name="emailPollub" id="emailPollub" placeholder="@pollub.edu.pl"
+                required email ngModel #email="ngModel" pattern='^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(pollub.edu)\.pl$'>
+              <span class="help-block" *ngIf="!email.valid && email.touched">Wprowadź poprawny adres e-mail</span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="login">Login:</label>
+              <input type="login" class="form-control" name="login" id="login" placeholder="Login" required ngModel>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="password">Hasło:</label>
+              <input type="password" class="form-control" name="password" id="password" #password="ngModel" placeholder="Hasło"
+                required [(ngModel)]="passwordText" pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$'>
+              <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                To pole nie może zostać puste, dodatkowo hasło musi zawierać min. 8 znaków w tym co najmniej jedną dużą
+                i
+                małą literę oraz cyfrę.
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="password">Powtórz hasło:</label>
+              <input type="password" class="form-control" name="passwordConfirm" ngModel #pwConfirm="ngModel" required
+                compare="password" placeholder="Powtórz hasło" [(ngModel)]="passwordConfirmText">
+              <div class="text-danger" *ngIf="pwConfirm.invalid && (pwConfirm.dirty || pwConfirm.touched)">
+                <div *ngIf="pwConfirm.errors['required']">To pole nie może zostać puste</div>
+                <div *ngIf="pwConfirm.errors['compare']">Hasła się różnią</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-group col-sm-2">
+                <button type="submit" class="btn btn-default" [disabled]="!f.valid">Rejestracja</button>
+                <p class="alert alert-danger" *ngIf="getErrorStatus() === 400">
+                  Użytkownik o takim adresie e-mail lub loginie już istnieje!
+                </p>
+              </div>
+            </div>
           </form>
+        </div>
+      </div>
     </div>
-  </div>
-
-  
+</div>

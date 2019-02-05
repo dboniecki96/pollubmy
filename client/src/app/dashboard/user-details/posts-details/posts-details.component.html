@@ -1,6 +1,41 @@
-<ul class="list-group">
-    <li class="list-group-item">
-        <h3>Twoje posty</h3>
-        <p>...</p>
-    </li>
-</ul>
+<div class="row justify-content-center">
+    <div class="jumbotron bg-dark">
+        <p class="text-white">W tej zakładce możesz podglądać, edytować oraz usuwać swoje posty</p>
+    </div>
+</div>
+<div class="list-group">
+    <div class="list-group-item">
+        <h3>Opublikowane posty</h3>
+        <p class="alert alert-danger" *ngIf="errorStatus === 400">Nie masz żadnych opublikowanych postów</p>
+        <div class="list-group" *ngFor="let post of posts">
+            <a routerLink="../posts/{{post.forumPostId}}" role="button" class="list-group-item list-group-item-action post">
+                <div class="row">
+                    <div class="col-sm-1 pointsection">
+                        <h3>{{post.points}}</h3>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="category">{{post.category}}</p>
+                            </div>
+                            <div class="col-sm">
+                                <p class="date text-right">Upublikowano w dniu
+                                    {{post.addPostTime | date: 'd/M/yyyy, HH:mm'}}</p>
+                            </div>
+                        </div>
+                        <h3 class="title">{{post.title}}</h3>
+                        <hr>
+                        <h4 class="text">{{post.postText}}</h4>
+                        <button type="button" class="btn btn-info">
+                            <span class="badge badge-light">{{post.commentsDTO.length}}</span> Komentarzy
+                        </button>
+
+                    </div>
+                </div>
+            </a>
+            <button type="button" routerLink="../posts/{{post.forumPostId}}/editpost" class="btn btn-primary">Edytuj
+                post</button>
+            <button type="button" (click)="deletePost(post.forumPostId)" class="btn btn-danger">Usuń post</button>
+        </div>
+    </div>
+</div>
